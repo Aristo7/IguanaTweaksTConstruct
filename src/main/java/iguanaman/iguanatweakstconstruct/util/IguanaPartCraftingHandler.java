@@ -3,7 +3,7 @@ package iguanaman.iguanatweakstconstruct.util;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.items.Pattern;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
@@ -29,7 +29,7 @@ public class IguanaPartCraftingHandler implements ICraftingHandler {
 			{
 				// is the item in the slot a wood pattern?
 				boolean isPattern = false;
-				if (slot.getItem().itemID == TContent.woodPattern.itemID) isPattern = true;
+				if (slot.getItem().itemID == TRepo.woodPattern.itemID) isPattern = true;
 
 				// too many items
 				if (material != null && pattern != null || material != null && !isPattern) return;
@@ -43,7 +43,7 @@ public class IguanaPartCraftingHandler implements ICraftingHandler {
 		if (pattern == null || material == null) return;
 
 		// part crafting occurred
-		int cost = ((Pattern)TContent.woodPattern).getPatternCost(pattern);
+		int cost = ((Pattern)TRepo.woodPattern).getPatternCost(pattern);
 		ItemKey key = PatternBuilder.instance.getItemKey(material);
 		int value = -1;
 		if (key == null)

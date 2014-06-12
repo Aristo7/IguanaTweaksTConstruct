@@ -7,9 +7,9 @@ import net.minecraft.item.ItemStack;
 
 public class IguanaMetalPattern extends IguanaPattern {
 
-	public IguanaMetalPattern(int id, String patternType, String folder)
+	public IguanaMetalPattern(String patternType, String folder)
 	{
-		super(id, patternName, getPatternNames(patternType), folder);
+		super(patternName, getPatternNames(patternType), folder);
 	}
 
 	protected static String[] getPatternNames (String partType)

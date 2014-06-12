@@ -18,14 +18,13 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.tools.ToolMod;
 import tconstruct.modifiers.tools.ModDurability;
-import tconstruct.modifiers.tools.ModExtraModifier;
 import tconstruct.modifiers.tools.ModInteger;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -52,15 +51,15 @@ public class ModifierTweaks {
 		// Change recipes
 		if (ModifierConfig.moreExpensiveSilkyCloth)
 		{
-			RecipeRemover.removeAnyRecipe(new ItemStack(TContent.materials, 1, 25));
-			GameRegistry.addRecipe(new ItemStack(TContent.materials, 1, 25), "sss", "sns", "sss", 'n', new ItemStack(TContent.materials, 1, 14), 's', new ItemStack(Item.silk)); //Silky Cloth
-			GameRegistry.addRecipe(new ItemStack(TContent.materials, 1, 25), "sss", "sns", "sss", 'n', new ItemStack(Item.ingotGold), 's', new ItemStack(Item.silk)); //Silky Cloth
+			RecipeRemover.removeAnyRecipe(new ItemStack(TRepo.materials, 1, 25));
+			GameRegistry.addRecipe(new ItemStack(TRepo.materials, 1, 25), "sss", "sns", "sss", 'n', new ItemStack(TRepo.materials, 1, 14), 's', new ItemStack(Item.silk)); //Silky Cloth
+			GameRegistry.addRecipe(new ItemStack(TRepo.materials, 1, 25), "sss", "sns", "sss", 'n', new ItemStack(Item.ingotGold), 's', new ItemStack(Item.silk)); //Silky Cloth
 		}
 
 		if (ModifierConfig.moreExpensiveSilkyJewel)
 		{
-			RecipeRemover.removeAnyRecipe(new ItemStack(TContent.materials, 1, 26));
-			GameRegistry.addRecipe(new ItemStack(TContent.materials, 1, 26), " c ", "cec", " c ", 'c', new ItemStack(TContent.materials, 1, 25), 'e', new ItemStack(Block.blockEmerald)); //Silky Jewel
+			RecipeRemover.removeAnyRecipe(new ItemStack(TRepo.materials, 1, 26));
+			GameRegistry.addRecipe(new ItemStack(TRepo.materials, 1, 26), " c ", "cec", " c ", 'c', new ItemStack(TRepo.materials, 1, 25), 'e', new ItemStack(Block.blockEmerald)); //Silky Jewel
 		}
 
 
@@ -69,7 +68,7 @@ public class ModifierTweaks {
 
 		if (IguanaConfig.partReplacement) ToolBuilder.registerToolMod(new IguanaModUpgrade());
 		ToolBuilder.registerToolMod(new IguanaModRepair());
-		ToolBuilder.registerToolMod(new ModInteger(new ItemStack[] { new ItemStack(TContent.materials, 1, 6) }, 4, "Moss", ModifierConfig.mossRepairSpeed, "\u00a72", "Auto-Repair"));
+		ToolBuilder.registerToolMod(new ModInteger(new ItemStack[] { new ItemStack(TRepo.materials, 1, 6) }, 4, "Moss", ModifierConfig.mossRepairSpeed, "\u00a72", "Auto-Repair"));
 		ToolBuilder.registerToolMod(new ModDurability(new ItemStack[] { new ItemStack(Item.emerald) }, 1, 0, 0.5f, ModifierConfig.emeraldboost, "Emerald", "\u00a72Durability +50%", "\u00a72"));
 		if (ModifierConfig.diamondPickaxeBoost)
 		{
@@ -123,7 +122,7 @@ public class ModifierTweaks {
 			ToolBuilder.registerToolMod(new IguanaModHeads(new ItemStack[] { new ItemStack(Item.netherStar) }, 25, ModifierConfig.netherstarboost, "Nether Star", "\u00a73Boosted", "\u00a73"));
 
 			// rendering code
-			ToolCore[] tools = new ToolCore[] { TContent.pickaxe, TContent.hammer };
+			ToolCore[] tools = new ToolCore[] { TRepo.pickaxe, TRepo.hammer };
 			int[] modifierIds = new int[] { 20, 21, 22, 23, 24, 25, 26, 27 };
 			String[] renderNames = new String[] { "skeletonskull", "zombiehead", "creeperhead", "endermanhead", "witherskeletonskull", "netherstar", "zombiepigmanhead", "blazehead" };
 

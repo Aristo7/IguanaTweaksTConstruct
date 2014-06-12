@@ -31,7 +31,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumMovingObjectType;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.event.Event.Result;
 import net.minecraftforge.event.EventPriority;
 import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
@@ -42,12 +41,11 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import tconstruct.blocks.LiquidMetalFinite;
-import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.items.tools.Battleaxe;
 import tconstruct.items.tools.Hammer;
 import tconstruct.items.tools.Pickaxe;
 import tconstruct.items.tools.Shortbow;
-import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.crafting.PatternBuilder.ItemKey;
 import tconstruct.library.crafting.PatternBuilder.MaterialSet;
@@ -57,6 +55,7 @@ import tconstruct.library.tools.ToolCore;
 import tconstruct.library.tools.Weapon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class IguanaEventHandler {
 
@@ -69,7 +68,7 @@ public class IguanaEventHandler {
 		{
 			ItemStack stack = ((EntityItem)event.entity).getEntityItem();
 			if (stack.getItem() != null && stack.getItem() instanceof ToolCore)
-				event.setResult(Result.DENY);
+				event.setResult(net.minecraftforge.event.Event.Result.DENY);
 		}
 	}
 
@@ -149,7 +148,7 @@ public class IguanaEventHandler {
 				if (stack != null && stack.hasTagCompound() && stack.getItem() instanceof ToolCore)
 				{
 					beheading = stack.getTagCompound().getCompoundTag("InfiTool").getInteger("Beheading");
-					if (stack.getItem() == TContent.cleaver)
+					if (stack.getItem() == TRepo.cleaver)
 						beheading += 2;
 				}
 
@@ -172,13 +171,13 @@ public class IguanaEventHandler {
 				return;
 
 			int bID = evt.world.getBlockId(hitX, hitY, hitZ);
-			for (int id = 0; id < TContent.fluidBlocks.length; id++)
-				if (bID == TContent.fluidBlocks[id].blockID)
+			for (int id = 0; id < TRepo.fluidBlocks.length; id++)
+				if (bID == TRepo.fluidBlocks[id].blockID)
 					if (evt.entityPlayer.capabilities.isCreativeMode)
 						evt.world.setBlockToAir(hitX, hitY, hitZ);
 					else
 					{
-						if (TContent.fluidBlocks[id] instanceof LiquidMetalFinite)
+						if (TRepo.fluidBlocks[id] instanceof LiquidMetalFinite)
 						{
 							int quanta = 0;
 							for (int posX = -1; posX <= 1; posX++)
@@ -208,7 +207,7 @@ public class IguanaEventHandler {
 						} else
 							evt.world.setBlockToAir(hitX, hitY, hitZ);
 
-						evt.setResult(Result.ALLOW);
+						evt.setResult(net.minecraftforge.event.Event.Result.ALLOW);
 						evt.result = new ItemStack(IguanaItems.clayBuckets, 1, id);
 					}
 		}
@@ -239,7 +238,7 @@ public class IguanaEventHandler {
 		int accessory = toolTag.getInteger("Accessory");
 		int extra = toolTag.hasKey("Extra") ? toolTag.getInteger("Extra") : -1;
 
-		if (!IguanaConfig.allowStoneTools && ((head == 1 || handle == 1 || event.tool != TContent.arrow && accessory == 1) || extra == 1))
+		if (!IguanaConfig.allowStoneTools && ((head == 1 || handle == 1 || event.tool != TRepo.arrow && accessory == 1) || extra == 1))
 		{
 			event.setResult(Result.DENY);
 			return;
@@ -266,7 +265,7 @@ public class IguanaEventHandler {
 				}
 			}
 
-			if (event.tool != TContent.arrow && accessory == 1)
+			if (event.tool != TRepo.arrow && accessory == 1)
 			{
 				int partIndex = IguanaTweaksTConstruct.toolParts.indexOf(event.tool.getAccessoryItem());
 				if (IguanaConfig.restrictedFlintParts.contains(partIndex+1))
@@ -288,7 +287,7 @@ public class IguanaEventHandler {
 		}
 
 
-		if (event.tool != TContent.arrow)
+		if (event.tool != TRepo.arrow)
 		{
 			// CREATE TOOLTIP LISTS
 			List<String> tips = new ArrayList<String>();
@@ -365,7 +364,7 @@ public class IguanaEventHandler {
 			if (LevelsConfig.toolLeveling && LevelsConfig.toolLevelingExtraModifiers)
 				toolTag.setInteger("Modifiers", Math.max(toolTag.getInteger("Modifiers") - 3 + LevelsConfig.startingModifiers, LevelsConfig.startingModifiers));
 
-			if (event.tool == TContent.hammer || event.tool == TContent.excavator || event.tool == TContent.lumberaxe)
+			if (event.tool == TRepo.hammer || event.tool == TRepo.excavator || event.tool == TRepo.lumberaxe)
 			{
 				List<String> replaceTags = new ArrayList<String>(Arrays.asList(
 						"MiningSpeed", "MiningSpeed2", "MiningSpeedHandle", "MiningSpeedExtra"

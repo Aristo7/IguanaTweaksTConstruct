@@ -15,7 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.common.BowRecipe;
-import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.items.tools.Battleaxe;
 import tconstruct.items.tools.Cleaver;
 import tconstruct.items.tools.Hammer;
@@ -25,8 +25,8 @@ import tconstruct.items.tools.Shortbow;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.crafting.ToolRecipe;
+import tconstruct.library.tools.TToolMaterial;
 import tconstruct.library.tools.ToolCore;
-import tconstruct.library.tools.ToolMaterial;
 import tconstruct.library.tools.ToolMod;
 
 public class IguanaModUpgrade extends ToolMod {
@@ -47,7 +47,7 @@ public class IguanaModUpgrade extends ToolMod {
 	protected ToolRecipe GetRecipe(ToolCore tool)
 	{
 		if (tool instanceof Shortbow)
-			return new BowRecipe(TContent.toolRod, TContent.bowstring, TContent.toolRod, TContent.shortbow);
+			return new BowRecipe(TRepo.toolRod, TRepo.bowstring, TRepo.toolRod, TRepo.shortbow);
 		else
 			return ToolBuilder.instance.recipeList.get(tool.getToolName());
 	}
@@ -365,10 +365,10 @@ public class IguanaModUpgrade extends ToolMod {
 
 		int reinforced = tags.getInteger("Unbreaking");
 		int reinforcedNew = newTags.getInteger("Unbreaking");
-		ToolMaterial oldHeadMat = TConstructRegistry.getMaterial(oldHead);
-		ToolMaterial oldHandleMat = TConstructRegistry.getMaterial(oldHandle);
-		ToolMaterial oldAccessoryMat = TConstructRegistry.getMaterial(oldAccessory);
-		ToolMaterial oldExtraMat = TConstructRegistry.getMaterial(oldExtra);
+		TToolMaterial oldHeadMat = TConstructRegistry.getMaterial(oldHead);
+		TToolMaterial oldHandleMat = TConstructRegistry.getMaterial(oldHandle);
+		TToolMaterial oldAccessoryMat = TConstructRegistry.getMaterial(oldAccessory);
+		TToolMaterial oldExtraMat = TConstructRegistry.getMaterial(oldExtra);
 		int reinforcedDifference = reinforcedNew - buildReinforced(oldHeadMat, oldHandleMat, oldAccessoryMat, oldExtraMat);
 		tags.setInteger("Unbreaking", reinforced + reinforcedDifference);
 		if (newTags.hasKey("FlightSpeed")) tags.setFloat("FlightSpeed", newTags.getFloat("FlightSpeed"));
@@ -519,7 +519,8 @@ public class IguanaModUpgrade extends ToolMod {
 	@Override
 	public void addMatchingEffect (ItemStack tool) {}
 
-	int buildReinforced (ToolMaterial headMat, ToolMaterial handleMat, ToolMaterial accessoryMat, ToolMaterial extraMat)
+	/////// GREG - COME BACK HERE
+	int buildReinforced (TToolMaterial headMat, TToolMaterial handleMat, TToolMaterial accessoryMat, TToolMaterial extraMat)
 	{
 		int reinforced = 0;
 

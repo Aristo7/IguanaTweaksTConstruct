@@ -1,10 +1,10 @@
 package iguanaman.iguanatweakstconstruct;
 
+import mantle.blocks.abstracts.InventoryLogic;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import tconstruct.common.TProxyCommon;
-import tconstruct.library.blocks.InventoryLogic;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class CommonProxy implements IGuiHandler

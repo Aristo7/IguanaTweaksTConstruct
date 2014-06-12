@@ -10,7 +10,7 @@ import org.lwjgl.input.Keyboard;
 import tconstruct.items.Pattern;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
-import tconstruct.library.tools.ToolMaterial;
+import tconstruct.library.tools.TToolMaterial;
 
 public class IguanaPattern extends Pattern {
 
@@ -43,7 +43,7 @@ public class IguanaPattern extends Pattern {
 			par3List.add("Leaf");
 			par3List.add("Slime");
 		} else
-			for (ToolMaterial material : TConstructRegistry.toolMaterials.values())
+			for (TToolMaterial material : TConstructRegistry.toolMaterials.values())
 				if (!par3List.contains(material.displayName))
 				{
 					ItemStack shard = pb.getShardFromSet(material.name());

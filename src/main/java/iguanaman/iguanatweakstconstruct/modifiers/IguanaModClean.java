@@ -3,7 +3,7 @@ package iguanaman.iguanatweakstconstruct.modifiers;
 import iguanaman.iguanatweakstconstruct.IguanaLog;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.tools.ToolMod;
@@ -11,7 +11,7 @@ import tconstruct.library.tools.ToolMod;
 public class IguanaModClean extends ToolMod {
 
 	public IguanaModClean() {
-		super(new ItemStack[] { new ItemStack(TContent.materials, 1, 25) }, 0, "");
+		super(new ItemStack[] { new ItemStack(TRepo.materials, 1, 25) }, 0, "");
 	}
 
 	public IguanaModClean(ItemStack[] items, int effect, String dataKey) {

@@ -5,7 +5,7 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
-import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.library.crafting.PatternBuilder;
 
 public class IguanaPartBuildRecipe implements IRecipe {
@@ -31,7 +31,7 @@ public class IguanaPartBuildRecipe implements IRecipe {
 			{
 				// is the item in the slot a wood pattern?
 				boolean isPattern = false;
-				if (slot.getItem().itemID == TContent.woodPattern.itemID) isPattern = true;
+				if (slot.getItem().itemID == TRepo.woodPattern.itemID) isPattern = true;
 
 				// too many items
 				if (material != null && pattern != null || material != null && !isPattern) return false;

@@ -19,7 +19,7 @@ import tconstruct.inventory.ActiveContainer;
 import tconstruct.inventory.PartCrafterChestContainer;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
-import tconstruct.library.tools.ToolMaterial;
+import tconstruct.library.tools.TToolMaterial;
 
 public class IguanaPartCrafterGui extends NewContainerGui
 {
@@ -28,7 +28,7 @@ public class IguanaPartCrafterGui extends NewContainerGui
 	boolean drawChestPart;
 	boolean hasTop, hasBottom;
 	ItemStack topMaterial, bottomMaterial;
-	ToolMaterial topEnum, bottomEnum;
+	TToolMaterial topEnum, bottomEnum;
 
 	public IguanaPartCrafterGui(InventoryPlayer inventoryplayer, PartBuilderLogic partlogic, World world, int x, int y, int z)
 	{

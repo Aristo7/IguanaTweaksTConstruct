@@ -9,7 +9,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import tconstruct.items.ToolPart;
 import tconstruct.library.TConstructRegistry;
-import tconstruct.library.tools.ToolMaterial;
+import tconstruct.library.tools.TToolMaterial;
 
 public class IguanaToolPart extends ToolPart {
 
@@ -23,7 +23,7 @@ public class IguanaToolPart extends ToolPart {
 	@Override
 	public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4)
 	{
-		ToolMaterial material = TConstructRegistry.getMaterial(par1ItemStack.getItemDamage());
+		TToolMaterial material = TConstructRegistry.getMaterial(par1ItemStack.getItemDamage());
 		if (!IguanaConfig.allowStoneTools && material.materialName.equals("Stone"))
 		{
 			par3List.add("\u00a74Can only be used to make casts,");
