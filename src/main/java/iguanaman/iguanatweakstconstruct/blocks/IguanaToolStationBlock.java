@@ -6,8 +6,8 @@ import tconstruct.blocks.ToolStationBlock;
 
 public class IguanaToolStationBlock extends ToolStationBlock {
 
-	public IguanaToolStationBlock(int id, Material material) {
-		super(id, material);
+	public IguanaToolStationBlock(Material material) {
+		super(material);
 	}
 
 	@Override

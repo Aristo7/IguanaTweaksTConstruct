@@ -1,7 +1,7 @@
 package iguanaman.iguanatweakstconstruct;
 
-import iguanaman.iguanatweakstconstruct.configs.IguanaConfig;
 import iguanaman.iguanatweakstconstruct.configs.HarvestLevelConfig;
+import iguanaman.iguanatweakstconstruct.configs.IguanaConfig;
 import iguanaman.iguanatweakstconstruct.configs.ModifierConfig;
 
 import java.lang.reflect.Field;
@@ -17,10 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
-import tconstruct.common.TContent;
-import tconstruct.library.TConstructRegistry;
-import tconstruct.library.crafting.ToolBuilder;
-import tconstruct.modifiers.tools.ModDurability;
+import tconstruct.common.TRepo;
 
 public class HarvestLevelTweaks {
 
@@ -216,12 +213,12 @@ public class HarvestLevelTweaks {
 //		MinecraftForge.setBlockHarvestLevel(Block.oreRedstone, "pickaxe", harvestLevelBronze);
 		MinecraftForge.setBlockHarvestLevel(Block.oreRedstoneGlowing, "pickaxe", MinecraftForge.getBlockHarvestLevel(Block.oreRedstone, 0, "pickaxe"));
 
-		MinecraftForge.setBlockHarvestLevel(TContent.oreGravel, 0, "shovel", MinecraftForge.getBlockHarvestLevel(Block.oreIron, 0, "pickaxe"));
-		MinecraftForge.setBlockHarvestLevel(TContent.oreGravel, 1, "shovel", MinecraftForge.getBlockHarvestLevel(Block.oreGold, 0, "pickaxe"));
-		MinecraftForge.setBlockHarvestLevel(TContent.oreGravel, 2, "shovel", MinecraftForge.getBlockHarvestLevel(TContent.oreSlag, 3, "pickaxe"));
-		MinecraftForge.setBlockHarvestLevel(TContent.oreGravel, 3, "shovel", MinecraftForge.getBlockHarvestLevel(TContent.oreSlag, 4, "pickaxe"));
-		MinecraftForge.setBlockHarvestLevel(TContent.oreGravel, 4, "shovel", MinecraftForge.getBlockHarvestLevel(TContent.oreSlag, 5, "pickaxe"));
-		MinecraftForge.setBlockHarvestLevel(TContent.oreGravel, 5, "shovel", MinecraftForge.getBlockHarvestLevel(TContent.oreSlag, 1, "pickaxe"));
+		MinecraftForge.setBlockHarvestLevel(TRepo.oreGravel, 0, "shovel", MinecraftForge.getBlockHarvestLevel(Block.oreIron, 0, "pickaxe"));
+		MinecraftForge.setBlockHarvestLevel(TRepo.oreGravel, 1, "shovel", MinecraftForge.getBlockHarvestLevel(Block.oreGold, 0, "pickaxe"));
+		MinecraftForge.setBlockHarvestLevel(TRepo.oreGravel, 2, "shovel", MinecraftForge.getBlockHarvestLevel(TRepo.oreSlag, 3, "pickaxe"));
+		MinecraftForge.setBlockHarvestLevel(TRepo.oreGravel, 3, "shovel", MinecraftForge.getBlockHarvestLevel(TRepo.oreSlag, 4, "pickaxe"));
+		MinecraftForge.setBlockHarvestLevel(TRepo.oreGravel, 4, "shovel", MinecraftForge.getBlockHarvestLevel(TRepo.oreSlag, 5, "pickaxe"));
+		MinecraftForge.setBlockHarvestLevel(TRepo.oreGravel, 5, "shovel", MinecraftForge.getBlockHarvestLevel(TRepo.oreSlag, 1, "pickaxe"));
 
 		List[] harvestLevelIds = {
 				HarvestLevelConfig.harvestLevel00Ids, HarvestLevelConfig.harvestLevel01Ids, HarvestLevelConfig.harvestLevel02Ids,
@@ -261,7 +258,7 @@ public class HarvestLevelTweaks {
 
 	public static void SetHarvestLevel(ItemStack oreStack, int level)
 	{
-		if (oreStack.itemID == TContent.oreGravel.blockID)
+		if (oreStack.itemID == TRepo.oreGravel.blockID)
 			return;
 
 		if (oreStack.getItemDamage() == OreDictionary.WILDCARD_VALUE)

@@ -8,8 +8,8 @@ import tconstruct.blocks.GravelOre;
 
 public class IguanaGravelOre extends GravelOre {
 
-	public IguanaGravelOre(int id) {
-		super(id);
+	public IguanaGravelOre() {
+		super();
 	}
 
 	/**

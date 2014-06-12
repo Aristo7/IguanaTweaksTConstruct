@@ -13,8 +13,8 @@ import tconstruct.library.tools.ToolMaterial;
 
 public class IguanaToolPart extends ToolPart {
 
-	public IguanaToolPart(int id, String textureType, String name) {
-		super(id, textureType, name);
+	public IguanaToolPart(String textureType, String name) {
+		super(textureType, name);
 	}
 
 	/**

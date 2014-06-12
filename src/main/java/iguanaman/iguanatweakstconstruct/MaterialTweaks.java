@@ -2,7 +2,7 @@ package iguanaman.iguanatweakstconstruct;
 
 import iguanaman.iguanatweakstconstruct.configs.IguanaConfig;
 import iguanaman.iguanatweakstconstruct.configs.MaterialConfig;
-import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.library.TConstructRegistry;
 import cpw.mods.fml.common.Loader;
 
@@ -54,7 +54,7 @@ public class MaterialTweaks {
 		TConstructRegistry.toolMaterials.remove(14);
 		TConstructRegistry.addToolMaterial(14, "Bronze", MaterialConfig.bronzeharvestLevel, Math.round(MaterialConfig.bronzedurability * durMod), Math.round(MaterialConfig.bronzeminingspeed * speedMod), MaterialConfig.bronzeattack, MaterialConfig.bronzehandleModifier, MaterialConfig.bronzereinforced, MaterialConfig.bronzestonebound, "\u00A76", "");
 
-		if (TContent.thaumcraftAvailable)
+		if (TRepo.thaumcraftAvailable)
 		{
 			TConstructRegistry.toolMaterials.remove(31);
 			TConstructRegistry.addToolMaterial(31, "Thaumium", MaterialConfig.thaumiumharvestLevel, Math.round(MaterialConfig.thaumiumdurability * durMod), Math.round(MaterialConfig.thaumiumminingspeed * speedMod), MaterialConfig.thaumiumattack, MaterialConfig.thaumiumhandleModifier, MaterialConfig.thaumiumreinforced, MaterialConfig.thaumiumstonebound, "\u00A75", "Thaumic");

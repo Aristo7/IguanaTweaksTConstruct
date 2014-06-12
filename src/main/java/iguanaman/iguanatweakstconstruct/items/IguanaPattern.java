@@ -14,13 +14,13 @@ import tconstruct.library.tools.ToolMaterial;
 
 public class IguanaPattern extends Pattern {
 
-	public IguanaPattern(int id, String patternType, String folder) {
-		super(id, patternType, folder);
+	public IguanaPattern( String patternType, String folder) {
+		super( patternType, folder);
 	}
 
-	public IguanaPattern(int id, String[] names, String[] patternTypes,
+	public IguanaPattern( String[] names, String[] patternTypes,
 			String folder) {
-		super(id, names, patternTypes, folder);
+		super( names, patternTypes, folder);
 	}
 
 	/**

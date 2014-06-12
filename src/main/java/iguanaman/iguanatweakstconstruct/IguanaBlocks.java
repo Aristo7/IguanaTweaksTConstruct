@@ -8,6 +8,7 @@ import iguanaman.iguanatweakstconstruct.blocks.IguanaToolStationBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.util.config.PHConstruct;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -23,14 +24,14 @@ public class IguanaBlocks {
 		//TOOL STATION + FORGE
 		IguanaLog.log("Modifying GUIs");
 
-		Block.blocksList[TContent.toolStationWood.blockID] = null;
-		TContent.toolStationWood = new IguanaToolStationBlock(PHConstruct.woodStation, Material.wood).setUnlocalizedName("ToolStation");
+		Block.blocksList[TRepo.toolStationWood.blockID] = null;
+		TRepo.toolStationWood = new IguanaToolStationBlock(Material.wood).setUnlocalizedName("ToolStation");
 
-		Block.blocksList[TContent.toolForge.blockID] = null;
-		TContent.toolForge = new IguanaToolForgeBlock(PHConstruct.toolForge, Material.iron).setUnlocalizedName("ToolForge");
+		Block.blocksList[TRepo.toolForge.blockID] = null;
+		TRepo.toolForge = new IguanaToolForgeBlock( Material.iron).setUnlocalizedName("ToolForge");
 
-		Block.blocksList[TContent.oreGravel.blockID] = null;
-		TContent.oreGravel = new IguanaGravelOre(PHConstruct.oreGravel).setUnlocalizedName("GravelOre").setUnlocalizedName("tconstruct.gravelore");
+		Block.blocksList[TRepo.oreGravel.blockID] = null;
+		TRepo.oreGravel = new IguanaGravelOre().setUnlocalizedName("GravelOre").setUnlocalizedName("tconstruct.gravelore");
 
 
 		//SKULLS

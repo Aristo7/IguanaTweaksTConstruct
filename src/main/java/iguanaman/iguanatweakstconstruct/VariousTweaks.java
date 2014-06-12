@@ -16,11 +16,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
-import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.items.Pattern;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
-import tconstruct.library.tools.ToolMaterial;
+import tconstruct.library.tools.TToolMaterial;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class VariousTweaks {
@@ -31,7 +31,7 @@ public class VariousTweaks {
 		// SUPPRESS MISSING TOOL LOGS
 		try
 		{
-			Class clazz = Class.forName(tconstruct.common.TContent.class.getName());
+			Class clazz = Class.forName(tconstruct.common.TRepo.class.getName());
 			Field fld = clazz.getField("supressMissingToolLogs");
 			fld.setBoolean(fld, true);
 		}
@@ -45,7 +45,7 @@ public class VariousTweaks {
 		if (IguanaConfig.removeStoneTorchRecipe)
 		{
 			IguanaLog.log("Removing stone torch recipe");
-			RecipeRemover.removeAnyRecipe(new ItemStack(TContent.stoneTorch, 4));
+			RecipeRemover.removeAnyRecipe(new ItemStack(TRepo.stoneTorch, 4));
 		}
 
 
@@ -58,10 +58,10 @@ public class VariousTweaks {
 
 		//SOFTEN SEARED BLOCKS
 		IguanaLog.log("Softening seared blocks");
-		TContent.smeltery.setHardness(1.5F);
-		TContent.lavaTank.setHardness(1.5F);
-		TContent.searedBlock.setHardness(1.5F);
-		TContent.castingChannel.setHardness(1.5F);
+		TRepo.smeltery.setHardness(1.5F);
+		TRepo.lavaTank.setHardness(1.5F);
+		TRepo.searedBlock.setHardness(1.5F);
+		TRepo.castingChannel.setHardness(1.5F);
 
 
 		// REUSABLE PARTS
@@ -72,8 +72,8 @@ public class VariousTweaks {
 		for (int p = 0; p < IguanaTweaksTConstruct.toolParts.size(); ++p)
 			for (int m = 0; m < nonMetals.length; ++m)
 			{
-				ToolMaterial mat = TConstructRegistry.getMaterial(m);
-				int cost = ((Pattern)TContent.woodPattern).getPatternCost(new ItemStack(TContent.woodPattern, 1, p + 1));
+				TToolMaterial mat = TConstructRegistry.getMaterial(m);
+				int cost = ((Pattern)TRepo.woodPattern).getPatternCost(new ItemStack(TRepo.woodPattern, 1, p + 1));
 				cost = Math.round(cost / 2f - 0.5f);
 				if (cost > 0)
 				{
@@ -92,38 +92,38 @@ public class VariousTweaks {
 			Item part = IguanaTweaksTConstruct.toolParts.get(i);
 
 			if (IguanaConfig.restrictedWoodParts.contains(i+1))
-				TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 0));
+				TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 0));
 			if (!IguanaConfig.allowStoneTools || IguanaConfig.restrictedStoneParts.contains(i+1))
-				TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 1));
+				TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 1));
 			if (IguanaConfig.restrictedFlintParts.contains(i+1))
-				TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 3));
+				TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 3));
 			if (IguanaConfig.restrictedCactusParts.contains(i+1))
-				TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 4));
+				TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 4));
 			if (IguanaConfig.restrictedBoneParts.contains(i+1))
-				TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 5));
+				TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 5));
 			if (IguanaConfig.restrictedPaperParts.contains(i+1))
-				TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 9));
+				TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 9));
 			if (IguanaConfig.restrictedSlimeParts.contains(i+1))
 			{
-				TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 8));
-				TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 17));
+				TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 8));
+				TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 17));
 			}
 			if (IguanaConfig.removeIronParts)
-			TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 2)); //iron
+			TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 2)); //iron
 			if (IguanaConfig.removeObsidianParts)
-			TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 6)); //obsidian
+			TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 6)); //obsidian
 			if (IguanaConfig.removeCobaltParts)
-			TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 10)); //cobalt
+			TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 10)); //cobalt
 			if (IguanaConfig.removeArditeParts)
-			TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 11)); //ardite
+			TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 11)); //ardite
 			if (IguanaConfig.removeManyullumParts)
-			TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 12)); //manyullum
+			TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 12)); //manyullum
 			if (IguanaConfig.removeBronzeParts)
-			TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 14)); //bronze
+			TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 14)); //bronze
 			if (IguanaConfig.removeAlumiteParts)
-			TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 15)); //alumite
+			TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 15)); //alumite
 			if (IguanaConfig.removeSteelParts)
-			TContent.tinkerHouseChest.removeItem(new ItemStack(part, 1, 16)); //steel
+			TRepo.tinkerHouseChest.removeItem(new ItemStack(part, 1, 16)); //steel
 		}
 
 
@@ -131,7 +131,7 @@ public class VariousTweaks {
 		if (IguanaConfig.easyBlankPatternRecipe)
 		{
 			IguanaLog.log("Adding easy blank pattern recipe");
-			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(TContent.blankPattern), true, new Object[]{ "ss", "ss", Character.valueOf('s'), "stickWood"}));
+			CraftingManager.getInstance().getRecipeList().add(new ShapedOreRecipe(new ItemStack(TRepo.blankPattern), true, new Object[]{ "ss", "ss", Character.valueOf('s'), "stickWood"}));
 		}
 
 
@@ -158,15 +158,15 @@ public class VariousTweaks {
 						|| x >= 23)
 					patternIds.add(x);
 
-			GameRegistry.addShapelessRecipe(new ItemStack(TContent.woodPattern, 1, patternIds.get(0)), new ItemStack(TContent.blankPattern, 1, 0));
+			GameRegistry.addShapelessRecipe(new ItemStack(TRepo.woodPattern, 1, patternIds.get(0)), new ItemStack(TRepo.blankPattern, 1, 0));
 			for (int x = 0; x < patternIds.size(); x++)
 			{
 				int pmeta = patternIds.get(x);
 
 				if (x == patternIds.size() - 1)
-					GameRegistry.addShapelessRecipe(new ItemStack(TContent.woodPattern, 1, patternIds.get(0)), new ItemStack(TContent.woodPattern, 1, pmeta));
+					GameRegistry.addShapelessRecipe(new ItemStack(TRepo.woodPattern, 1, patternIds.get(0)), new ItemStack(TRepo.woodPattern, 1, pmeta));
 				else
-					GameRegistry.addShapelessRecipe(new ItemStack(TContent.woodPattern, 1, patternIds.get(x+1)), new ItemStack(TContent.woodPattern, 1, pmeta));
+					GameRegistry.addShapelessRecipe(new ItemStack(TRepo.woodPattern, 1, patternIds.get(x+1)), new ItemStack(TRepo.woodPattern, 1, pmeta));
 			}
 		}
 

@@ -1,9 +1,11 @@
 package iguanaman.iguanatweakstconstruct.items;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import tconstruct.items.FilledBucket;
@@ -12,8 +14,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ClayBucketFilled extends FilledBucket {
 
-	public ClayBucketFilled(int id) {
-		super(id);
+	public ClayBucketFilled(Block block) {
+		super(block);
 	}
 
 	/**
@@ -34,7 +36,7 @@ public class ClayBucketFilled extends FilledBucket {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons (IconRegister iconRegister)
 	{
-		icons = new Icon[textureNames.length];
+		icons = new IIcon[textureNames.length];
 
 		for (int i = 0; i < icons.length; ++i)
 			icons[i] = iconRegister.registerIcon("iguanatweakstconstruct:clayBucket_" + textureNames[i]);

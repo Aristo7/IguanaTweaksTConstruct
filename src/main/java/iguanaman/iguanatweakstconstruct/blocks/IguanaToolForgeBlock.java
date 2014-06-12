@@ -6,8 +6,8 @@ import tconstruct.blocks.ToolForgeBlock;
 
 public class IguanaToolForgeBlock extends ToolForgeBlock {
 
-	public IguanaToolForgeBlock(int id, Material material) {
-		super(id, material);
+	public IguanaToolForgeBlock(Material material) {
+		super(material);
 	}
 
 	@Override

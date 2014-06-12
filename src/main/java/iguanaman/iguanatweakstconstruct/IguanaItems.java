@@ -18,6 +18,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import tconstruct.common.BowRecipe;
 import tconstruct.common.TContent;
+import tconstruct.common.TRepo;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.util.IPattern;
@@ -61,59 +62,59 @@ public class IguanaItems {
 
 
 		//TCON PARTS
-		TContent.toolRod = new IguanaToolPart(PHConstruct.toolRod, "_rod", "ToolRod").setUnlocalizedName("tconstruct.ToolRod");
-		TContent.pickaxeHead = new IguanaToolPart(PHConstruct.pickaxeHead, "_pickaxe_head", "PickHead").setUnlocalizedName("tconstruct.PickaxeHead");
-		TContent.shovelHead = new IguanaToolPart(PHConstruct.shovelHead, "_shovel_head", "ShovelHead").setUnlocalizedName("tconstruct.ShovelHead");
-		TContent.hatchetHead = new IguanaToolPart(PHConstruct.axeHead, "_axe_head", "AxeHead").setUnlocalizedName("tconstruct.AxeHead");
-		TContent.binding = new IguanaToolPart(PHConstruct.binding, "_binding", "Binding").setUnlocalizedName("tconstruct.Binding");
-		TContent.toughBinding = new IguanaToolPart(PHConstruct.toughBinding, "_toughbind", "ToughBind").setUnlocalizedName("tconstruct.ThickBinding");
-		TContent.toughRod = new IguanaToolPart(PHConstruct.toughRod, "_toughrod", "ToughRod").setUnlocalizedName("tconstruct.ThickRod");
-		TContent.largePlate = new IguanaToolPart(PHConstruct.largePlate, "_largeplate", "LargePlate").setUnlocalizedName("tconstruct.LargePlate");
+		TRepo.toolRod = new IguanaToolPart("_rod", "ToolRod").setUnlocalizedName("tconstruct.ToolRod");
+		TRepo.pickaxeHead = new IguanaToolPart( "_pickaxe_head", "PickHead").setUnlocalizedName("tconstruct.PickaxeHead");
+		TRepo.shovelHead = new IguanaToolPart( "_shovel_head", "ShovelHead").setUnlocalizedName("tconstruct.ShovelHead");
+		TRepo.hatchetHead = new IguanaToolPart("_axe_head", "AxeHead").setUnlocalizedName("tconstruct.AxeHead");
+		TRepo.binding = new IguanaToolPart( "_binding", "Binding").setUnlocalizedName("tconstruct.Binding");
+		TRepo.toughBinding = new IguanaToolPart( "_toughbind", "ToughBind").setUnlocalizedName("tconstruct.ThickBinding");
+		TRepo.toughRod = new IguanaToolPart( "_toughrod", "ToughRod").setUnlocalizedName("tconstruct.ThickRod");
+		TRepo.largePlate = new IguanaToolPart( "_largeplate", "LargePlate").setUnlocalizedName("tconstruct.LargePlate");
 
-		TContent.swordBlade = new IguanaToolPart(PHConstruct.swordBlade, "_sword_blade", "SwordBlade").setUnlocalizedName("tconstruct.SwordBlade");
-		TContent.wideGuard = new IguanaToolPart(PHConstruct.largeGuard, "_large_guard", "LargeGuard").setUnlocalizedName("tconstruct.LargeGuard");
-		TContent.handGuard = new IguanaToolPart(PHConstruct.medGuard, "_medium_guard", "MediumGuard").setUnlocalizedName("tconstruct.MediumGuard");
-		TContent.crossbar = new IguanaToolPart(PHConstruct.crossbar, "_crossbar", "Crossbar").setUnlocalizedName("tconstruct.Crossbar");
-		TContent.knifeBlade = new IguanaToolPart(PHConstruct.knifeBlade, "_knife_blade", "KnifeBlade").setUnlocalizedName("tconstruct.KnifeBlade");
-		TContent.fullGuard = new IguanaToolPart(PHConstruct.fullGuard, "_full_guard", "FullGuard").setUnlocalizedName("tconstruct.FullGuard");
+		TRepo.swordBlade = new IguanaToolPart( "_sword_blade", "SwordBlade").setUnlocalizedName("tconstruct.SwordBlade");
+		TRepo.wideGuard = new IguanaToolPart( "_large_guard", "LargeGuard").setUnlocalizedName("tconstruct.LargeGuard");
+		TRepo.handGuard = new IguanaToolPart( "_medium_guard", "MediumGuard").setUnlocalizedName("tconstruct.MediumGuard");
+		TRepo.crossbar = new IguanaToolPart( "_crossbar", "Crossbar").setUnlocalizedName("tconstruct.Crossbar");
+		TRepo.knifeBlade = new IguanaToolPart( "_knife_blade", "KnifeBlade").setUnlocalizedName("tconstruct.KnifeBlade");
+		TRepo.fullGuard = new IguanaToolPart( "_full_guard", "FullGuard").setUnlocalizedName("tconstruct.FullGuard");
 
-		TContent.frypanHead = new IguanaToolPart(PHConstruct.frypanHead, "_frypan_head", "FrypanHead").setUnlocalizedName("tconstruct.FrypanHead");
-		TContent.signHead = new IguanaToolPart(PHConstruct.signHead, "_battlesign_head", "SignHead").setUnlocalizedName("tconstruct.SignHead");
-		TContent.chiselHead = new IguanaToolPart(PHConstruct.chiselHead, "_chisel_head", "ChiselHead").setUnlocalizedName("tconstruct.ChiselHead");
+		TRepo.frypanHead = new IguanaToolPart( "_frypan_head", "FrypanHead").setUnlocalizedName("tconstruct.FrypanHead");
+		TRepo.signHead = new IguanaToolPart( "_battlesign_head", "SignHead").setUnlocalizedName("tconstruct.SignHead");
+		TRepo.chiselHead = new IguanaToolPart( "_chisel_head", "ChiselHead").setUnlocalizedName("tconstruct.ChiselHead");
 
-		TContent.scytheBlade = new IguanaToolPart(PHConstruct.scytheBlade, "_scythe_head", "ScytheHead").setUnlocalizedName("tconstruct.ScytheBlade");
-		TContent.broadAxeHead = new IguanaToolPart(PHConstruct.lumberHead, "_lumberaxe_head", "LumberHead").setUnlocalizedName("tconstruct.LumberHead");
-		TContent.excavatorHead = new IguanaToolPart(PHConstruct.excavatorHead, "_excavator_head", "ExcavatorHead").setUnlocalizedName("tconstruct.ExcavatorHead");
-		TContent.largeSwordBlade = new IguanaToolPart(PHConstruct.largeSwordBlade, "_large_sword_blade", "LargeSwordBlade").setUnlocalizedName("tconstruct.LargeSwordBlade");
-		TContent.hammerHead = new IguanaToolPart(PHConstruct.hammerHead, "_hammer_head", "HammerHead").setUnlocalizedName("tconstruct.HammerHead");
+		TRepo.scytheBlade = new IguanaToolPart( "_scythe_head", "ScytheHead").setUnlocalizedName("tconstruct.ScytheBlade");
+		TRepo.broadAxeHead = new IguanaToolPart( "_lumberaxe_head", "LumberHead").setUnlocalizedName("tconstruct.LumberHead");
+		TRepo.excavatorHead = new IguanaToolPart( "_excavator_head", "ExcavatorHead").setUnlocalizedName("tconstruct.ExcavatorHead");
+		TRepo.largeSwordBlade = new IguanaToolPart( "_large_sword_blade", "LargeSwordBlade").setUnlocalizedName("tconstruct.LargeSwordBlade");
+		TRepo.hammerHead = new IguanaToolPart( "_hammer_head", "HammerHead").setUnlocalizedName("tconstruct.HammerHead");
 
-		TContent.arrowhead = new IguanaToolPart(PHConstruct.arrowhead, "_arrowhead", "ArrowHead").setUnlocalizedName("tconstruct.Arrowhead");
+		TRepo.arrowhead = new IguanaToolPart( "_arrowhead", "ArrowHead").setUnlocalizedName("tconstruct.Arrowhead");
 
 
 		// RE-ADD TOOL RECIPES
 		ToolBuilder tb = ToolBuilder.instance;
-		ToolBuilder.addNormalToolRecipe(TContent.pickaxe, TContent.pickaxeHead, TContent.toolRod, TContent.binding);
-		ToolBuilder.addNormalToolRecipe(TContent.broadsword, TContent.swordBlade, TContent.toolRod, TContent.wideGuard);
-		ToolBuilder.addNormalToolRecipe(TContent.hatchet, TContent.hatchetHead, TContent.toolRod);
-		ToolBuilder.addNormalToolRecipe(TContent.shovel, TContent.shovelHead, TContent.toolRod);
-		ToolBuilder.addNormalToolRecipe(TContent.longsword, TContent.swordBlade, TContent.toolRod, TContent.handGuard);
-		ToolBuilder.addNormalToolRecipe(TContent.rapier, TContent.swordBlade, TContent.toolRod, TContent.crossbar);
-		ToolBuilder.addNormalToolRecipe(TContent.frypan, TContent.frypanHead, TContent.toolRod);
-		ToolBuilder.addNormalToolRecipe(TContent.battlesign, TContent.signHead, TContent.toolRod);
-		ToolBuilder.addNormalToolRecipe(TContent.mattock, TContent.hatchetHead, TContent.toolRod, TContent.shovelHead);
-		ToolBuilder.addNormalToolRecipe(TContent.dagger, TContent.knifeBlade, TContent.toolRod, TContent.crossbar);
-		ToolBuilder.addNormalToolRecipe(TContent.cutlass, TContent.swordBlade, TContent.toolRod, TContent.fullGuard);
-		ToolBuilder.addNormalToolRecipe(TContent.chisel, TContent.chiselHead, TContent.toolRod);
+		ToolBuilder.addNormalToolRecipe(TRepo.pickaxe, TRepo.pickaxeHead, TRepo.toolRod, TRepo.binding);
+		ToolBuilder.addNormalToolRecipe(TRepo.broadsword, TRepo.swordBlade, TRepo.toolRod, TRepo.wideGuard);
+		ToolBuilder.addNormalToolRecipe(TRepo.hatchet, TRepo.hatchetHead, TRepo.toolRod);
+		ToolBuilder.addNormalToolRecipe(TRepo.shovel, TRepo.shovelHead, TRepo.toolRod);
+		ToolBuilder.addNormalToolRecipe(TRepo.longsword, TRepo.swordBlade, TRepo.toolRod, TRepo.handGuard);
+		ToolBuilder.addNormalToolRecipe(TRepo.rapier, TRepo.swordBlade, TRepo.toolRod, TRepo.crossbar);
+		ToolBuilder.addNormalToolRecipe(TRepo.frypan, TRepo.frypanHead, TRepo.toolRod);
+		ToolBuilder.addNormalToolRecipe(TRepo.battlesign, TRepo.signHead, TRepo.toolRod);
+		ToolBuilder.addNormalToolRecipe(TRepo.mattock, TRepo.hatchetHead, TRepo.toolRod, TRepo.shovelHead);
+		ToolBuilder.addNormalToolRecipe(TRepo.dagger, TRepo.knifeBlade, TRepo.toolRod, TRepo.crossbar);
+		ToolBuilder.addNormalToolRecipe(TRepo.cutlass, TRepo.swordBlade, TRepo.toolRod, TRepo.fullGuard);
+		ToolBuilder.addNormalToolRecipe(TRepo.chisel, TRepo.chiselHead, TRepo.toolRod);
 
-		ToolBuilder.addNormalToolRecipe(TContent.scythe, TContent.scytheBlade, TContent.toughRod, TContent.toughBinding, TContent.toughRod);
-		ToolBuilder.addNormalToolRecipe(TContent.lumberaxe, TContent.broadAxeHead, TContent.toughRod, TContent.largePlate, TContent.toughBinding);
-		ToolBuilder.addNormalToolRecipe(TContent.cleaver, TContent.largeSwordBlade, TContent.toughRod, TContent.largePlate, TContent.toughRod);
-		ToolBuilder.addNormalToolRecipe(TContent.excavator, TContent.excavatorHead, TContent.toughRod, TContent.largePlate, TContent.toughBinding);
-		ToolBuilder.addNormalToolRecipe(TContent.hammer, TContent.hammerHead, TContent.toughRod, TContent.largePlate, TContent.largePlate);
-		ToolBuilder.addNormalToolRecipe(TContent.battleaxe, TContent.broadAxeHead, TContent.toughRod, TContent.broadAxeHead, TContent.toughBinding);
+		ToolBuilder.addNormalToolRecipe(TRepo.scythe, TRepo.scytheBlade, TRepo.toughRod, TRepo.toughBinding, TRepo.toughRod);
+		ToolBuilder.addNormalToolRecipe(TRepo.lumberaxe, TRepo.broadAxeHead, TRepo.toughRod, TRepo.largePlate, TRepo.toughBinding);
+		ToolBuilder.addNormalToolRecipe(TRepo.cleaver, TRepo.largeSwordBlade, TRepo.toughRod, TRepo.largePlate, TRepo.toughRod);
+		ToolBuilder.addNormalToolRecipe(TRepo.excavator, TRepo.excavatorHead, TRepo.toughRod, TRepo.largePlate, TRepo.toughBinding);
+		ToolBuilder.addNormalToolRecipe(TRepo.hammer, TRepo.hammerHead, TRepo.toughRod, TRepo.largePlate, TRepo.largePlate);
+		ToolBuilder.addNormalToolRecipe(TRepo.battleaxe, TRepo.broadAxeHead, TRepo.toughRod, TRepo.broadAxeHead, TRepo.toughBinding);
 
-		ToolBuilder.addNormalToolRecipe(TContent.arrow, TContent.arrowhead, TContent.toolRod, TContent.fletching);
-		ToolBuilder.addCustomToolRecipe(new BowRecipe(TContent.toolRod, TContent.bowstring, TContent.toolRod, TContent.shortbow));
+		ToolBuilder.addNormalToolRecipe(TRepo.arrow, TRepo.arrowhead, TRepo.toolRod, TRepo.fletching);
+		ToolBuilder.addCustomToolRecipe(new BowRecipe(TRepo.toolRod, TRepo.bowstring, TRepo.toolRod, TRepo.shortbow));
 
 		//SKULL ITEM
 		IguanaLog.log("Adding skull item");
@@ -143,17 +144,17 @@ public class IguanaItems {
 			for (int j = 0; j < recipeItems.length; ++j)
 			{
 				Item item = (Item)recipeItems[j];
-				CraftingManager.getInstance().addRecipe(new ItemStack(item), new Object[] {recipePatterns[j], 'X', new ItemStack(TContent.materials, 1, 3)});
+				CraftingManager.getInstance().addRecipe(new ItemStack(item), new Object[] {recipePatterns[j], 'X', new ItemStack(TRepo.materials, 1, 3)});
 			}
 		}
 
 
 		// NEW TCON PATTERNS
-		Item.itemsList[TContent.woodPattern.itemID] = null;
+		Item.itemsList[TRepo.woodPattern.itemID] = null;
 		//Item.itemsList[TContent.metalPattern.itemID] = null;
-		TContent.woodPattern = new IguanaPattern(PHConstruct.woodPattern, "pattern_", "materials/").setUnlocalizedName("tconstruct.Pattern");
+		TRepo.woodPattern = new IguanaPattern( "pattern_", "materials/").setUnlocalizedName("tconstruct.Pattern");
 		//TContent.metalPattern = new IguanaMetalPattern(PHConstruct.metalPattern, "cast_", "materials/").setUnlocalizedName("tconstruct.MetalPattern");
-		PatternBuilder.instance.addToolPattern((IPattern) TContent.woodPattern);
+		PatternBuilder.instance.addToolPattern((IPattern) TRepo.woodPattern);
 
 
 	}
