@@ -55,13 +55,14 @@ import tconstruct.library.tools.ToolCore;
 import tconstruct.library.tools.Weapon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class IguanaEventHandler {
 
 	Random random = new Random();
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onItemExpireEvent(ItemExpireEvent event)
 	{
 		if (IguanaConfig.toolsNeverDespawn && event.entity != null && event.entity instanceof EntityItem)
@@ -72,7 +73,7 @@ public class IguanaEventHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onHurt (LivingHurtEvent event)
 	{
 		if (event.source.damageType.equals("player") || event.source.damageType.equals("arrow"))
@@ -91,7 +92,7 @@ public class IguanaEventHandler {
 			}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onUseHoe(UseHoeEvent event) {
 		EntityPlayer player = event.entityPlayer;
 		ItemStack stack = event.current;
@@ -106,7 +107,7 @@ public class IguanaEventHandler {
 		event.drops.add(entityitem);
 	}
 
-	@ForgeSubscribe(priority = EventPriority.LOWEST)
+	@SubscribeEvent //(priority = EventPriority.LOWEST)
 	public void LivingDrops(LivingDropsEvent event)
 	{
 		Iterator<EntityItem> i = event.drops.iterator();
@@ -158,7 +159,7 @@ public class IguanaEventHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void bucketFill (FillBucketEvent evt)
 	{
 		if (evt.current.getItem() == IguanaItems.clayBucketFired && evt.target.typeOfHit == EnumMovingObjectType.TILE)
@@ -213,7 +214,7 @@ public class IguanaEventHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void EntityInteract(EntityInteractEvent event)
 	{
 		if (event != null && event.target != null && event.target instanceof EntityCow)
@@ -229,7 +230,7 @@ public class IguanaEventHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void craftTool (ToolCraftEvent.NormalTool event)
 	{
 		NBTTagCompound toolTag = event.toolTag.getCompoundTag("InfiTool");
@@ -378,7 +379,7 @@ public class IguanaEventHandler {
 	}
 
 	/* Crafting */
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void craftPart (PartBuilderEvent.NormalPart event)
 	{
 		ItemKey key = PatternBuilder.instance.getItemKey(event.material);
@@ -403,7 +404,7 @@ public class IguanaEventHandler {
 		}
 	}
 
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onBlockHarvested(HarvestDropsEvent event)
 	{
 		if (event.block != null)
@@ -427,7 +428,7 @@ public class IguanaEventHandler {
 	}
 
 	@SideOnly(Side.CLIENT)
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void onRenderGameOverlay(RenderGameOverlayEvent.Text event) {
 		if (LevelsConfig.toolLeveling && LevelsConfig.showDebugXP)
 		{

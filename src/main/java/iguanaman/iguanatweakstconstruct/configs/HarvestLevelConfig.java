@@ -7,9 +7,9 @@ import java.util.List;
 
 import cpw.mods.fml.common.Loader;
 import tconstruct.library.TConstructRegistry;
-import net.minecraftforge.common.ConfigCategory;
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.Property;
+import net.minecraftforge.common.config.ConfigCategory;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 public class HarvestLevelConfig {
 

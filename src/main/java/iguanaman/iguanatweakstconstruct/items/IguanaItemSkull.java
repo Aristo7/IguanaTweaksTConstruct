@@ -6,12 +6,12 @@ import iguanaman.iguanatweakstconstruct.configs.ModifierConfig;
 
 import java.util.List;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -84,7 +84,7 @@ public class IguanaItemSkull extends ItemSkull {
 	/**
 	 * Gets an icon index based on an item's damage value
 	 */
-	public Icon getIconFromDamage(int par1)
+	public IIcon getIconFromDamage(int par1)
 	{
 		if (par1 < 0 || par1 >= skullTypes.length)
 			par1 = 0;
@@ -94,9 +94,9 @@ public class IguanaItemSkull extends ItemSkull {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		field_94586_c = new Icon[field_94587_a.length];
+		field_94586_c = new IIcon[field_94587_a.length];
 
 		for (int i = 0; i < field_94587_a.length; ++i)
 			if (i >= 5)

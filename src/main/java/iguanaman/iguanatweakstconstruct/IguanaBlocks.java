@@ -5,7 +5,7 @@ import iguanaman.iguanatweakstconstruct.blocks.IguanaGravelOre;
 import iguanaman.iguanatweakstconstruct.blocks.IguanaTileEntitySkull;
 import iguanaman.iguanatweakstconstruct.blocks.IguanaToolForgeBlock;
 import iguanaman.iguanatweakstconstruct.blocks.IguanaToolStationBlock;
-import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.block.material.Material;
 import tconstruct.common.TContent;
 import tconstruct.common.TRepo;

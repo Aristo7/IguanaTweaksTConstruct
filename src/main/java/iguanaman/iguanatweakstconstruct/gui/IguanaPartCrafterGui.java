@@ -9,6 +9,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraft.client.gui.FontRenderer;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
@@ -42,10 +43,10 @@ public class IguanaPartCrafterGui extends NewContainerGui
 	@Override
 	protected void drawGuiContainerForegroundLayer (int par1, int par2)
 	{
-		fontRenderer.drawString(StatCollector.translateToLocal("crafters.PartBuilder"), 6, 6, 4210752);
-		fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
+		fontRendererObj.drawString(StatCollector.translateToLocal("crafters.PartBuilder"), 6, 6, 4210752);
+		fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
 		if (drawChestPart)
-			fontRenderer.drawString(StatCollector.translateToLocal("inventory.PatternChest"), -108, ySize - 148, 4210752);
+			fontRendererObj.drawString(StatCollector.translateToLocal("inventory.PatternChest"), -108, ySize - 148, 4210752);
 
 		drawMaterialInformation();
 	}
@@ -53,8 +54,8 @@ public class IguanaPartCrafterGui extends NewContainerGui
 	void drawDefaultInformation ()
 	{
 		title = "\u00A7nTool Part Building";
-		drawCenteredString(fontRenderer, title, xSize + 63, 8, 16777215);
-		fontRenderer.drawSplitString("Place a pattern and a material on the left to get started.", xSize + 8, 24, 115, 16777215);
+		drawCenteredString(fontRendererObj, title, xSize + 63, 8, 16777215);
+		fontRendererObj.drawSplitString("Place a pattern and a material on the left to get started.", xSize + 8, 24, 115, 16777215);
 	}
 
 	void drawMaterialInformation ()
@@ -96,34 +97,34 @@ public class IguanaPartCrafterGui extends NewContainerGui
 		int offset = 8;
 		if (hasTop)
 		{
-			drawCenteredString(fontRenderer, title, xSize + 63, offset, 16777215);
-			fontRenderer.drawString("Base Durability: " + topEnum.durability(), xSize + 8, offset + 16, 16777215);
-			fontRenderer.drawString("Handle Modifier: " + topEnum.handleDurability() + "x", xSize + 8, offset + 27, 16777215);
-			fontRenderer.drawString("Mining Speed: " + topEnum.toolSpeed() / 100f, xSize + 8, offset + 38, 16777215);
-			fontRenderer.drawString("Mining Level: " + getHarvestLevelName(topEnum.harvestLevel()), xSize + 8, offset + 49, 16777215);
+			drawCenteredString(fontRendererObj, title, xSize + 63, offset, 16777215);
+			fontRendererObj.drawString("Base Durability: " + topEnum.durability(), xSize + 8, offset + 16, 16777215);
+			fontRendererObj.drawString("Handle Modifier: " + topEnum.handleDurability() + "x", xSize + 8, offset + 27, 16777215);
+			fontRendererObj.drawString("Mining Speed: " + topEnum.toolSpeed() / 100f, xSize + 8, offset + 38, 16777215);
+			fontRendererObj.drawString("Mining Level: " + getHarvestLevelName(topEnum.harvestLevel()), xSize + 8, offset + 49, 16777215);
 
 			int attack = topEnum.attack();
 			String heart = attack == 2 ? " Heart" : " Hearts";
 			if (attack % 2 == 0)
-				fontRenderer.drawString("Attack: " + attack / 2 + heart, xSize + 8, offset + 60, 0xffffff);
+				fontRendererObj.drawString("Attack: " + attack / 2 + heart, xSize + 8, offset + 60, 0xffffff);
 			else
-				fontRenderer.drawString("Attack: " + attack / 2f + heart, xSize + 8, offset + 60, 0xffffff);
+				fontRendererObj.drawString("Attack: " + attack / 2f + heart, xSize + 8, offset + 60, 0xffffff);
 		}
 
 		offset = 90;
 		if (hasBottom)
 		{
-			drawCenteredString(fontRenderer, otherTitle, xSize + 63, offset, 16777215);
-			fontRenderer.drawString("Base Durability: " + bottomEnum.durability(), xSize + 8, offset + 16, 16777215);
-			fontRenderer.drawString("Handle Modifier: " + bottomEnum.handleDurability() + "x", xSize + 8, offset + 27, 16777215);
-			fontRenderer.drawString("Mining Speed: " + bottomEnum.toolSpeed() / 100f, xSize + 8, offset + 38, 16777215);
-			fontRenderer.drawString("Mining Level: " + getHarvestLevelName(bottomEnum.harvestLevel()), xSize + 8, offset + 49, 16777215);
+			drawCenteredString(fontRendererObj, otherTitle, xSize + 63, offset, 16777215);
+			fontRendererObj.drawString("Base Durability: " + bottomEnum.durability(), xSize + 8, offset + 16, 16777215);
+			fontRendererObj.drawString("Handle Modifier: " + bottomEnum.handleDurability() + "x", xSize + 8, offset + 27, 16777215);
+			fontRendererObj.drawString("Mining Speed: " + bottomEnum.toolSpeed() / 100f, xSize + 8, offset + 38, 16777215);
+			fontRendererObj.drawString("Mining Level: " + getHarvestLevelName(bottomEnum.harvestLevel()), xSize + 8, offset + 49, 16777215);
 			int attack = bottomEnum.attack();
 			String heart = attack == 2 ? " Heart" : " Hearts";
 			if (attack % 2 == 0)
-				fontRenderer.drawString("Attack: " + attack / 2 + heart, xSize + 8, offset + 60, 0xffffff);
+				fontRendererObj.drawString("Attack: " + attack / 2 + heart, xSize + 8, offset + 60, 0xffffff);
 			else
-				fontRenderer.drawString("Attack: " + attack / 2f + heart, xSize + 8, offset + 60, 0xffffff);
+				fontRendererObj.drawString("Attack: " + attack / 2f + heart, xSize + 8, offset + 60, 0xffffff);
 		}
 
 		if (!hasTop && !hasBottom)
