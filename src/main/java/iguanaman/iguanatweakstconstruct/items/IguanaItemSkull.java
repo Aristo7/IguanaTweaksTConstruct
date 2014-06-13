@@ -9,6 +9,7 @@ import java.util.List;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemSkull;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -19,7 +20,9 @@ public class IguanaItemSkull extends ItemSkull {
 
 	private static final String[] skullTypes = new String[] {"skeleton", "wither", "zombie", "char", "creeper", "enderman", "pigman", "blaze"};
 	public static final String[] field_94587_a = new String[] {"skeleton", "wither", "zombie", "steve", "creeper", "skull_enderman", "skull_pigman", "skull_blaze"};
-
+	protected IIcon[] field_94586_c;
+	
+	
 	public IguanaItemSkull() {
 		super();
 	}
@@ -48,7 +51,7 @@ public class IguanaItemSkull extends ItemSkull {
 	/**
 	 * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
 	 */
-	public void getSubItems(int par1, CreativeTabs par2CreativeTabs, List par3List)
+	public void getSubItems(Item par1, CreativeTabs par2CreativeTabs, List par3List)
 	{
 		for (int j = 0; j < skullTypes.length; ++j)
 			par3List.add(new ItemStack(par1, 1, j));

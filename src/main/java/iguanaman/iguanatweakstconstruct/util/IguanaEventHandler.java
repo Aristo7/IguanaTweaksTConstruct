@@ -30,6 +30,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -67,7 +68,7 @@ public class IguanaEventHandler {
 		{
 			ItemStack stack = ((EntityItem)event.entity).getEntityItem();
 			if (stack.getItem() != null && stack.getItem() instanceof ToolCore)
-				event.setResult(net.minecraftforge.event.Event.Result.DENY);
+				event.setResult(Result.DENY);
 		}
 	}
 
@@ -160,7 +161,7 @@ public class IguanaEventHandler {
 	@SubscribeEvent
 	public void bucketFill (FillBucketEvent evt)
 	{
-		if (evt.current.getItem() == IguanaItems.clayBucketFired && evt.target.typeOfHit == EnumMovingObjectType.TILE)
+		if (evt.current.getItem() == IguanaItems.clayBucketFired && evt.target.typeOfHit == MovingObjectType.ENTITY)
 		{
 			int hitX = evt.target.blockX;
 			int hitY = evt.target.blockY;
@@ -169,9 +170,9 @@ public class IguanaEventHandler {
 			if (evt.entityPlayer != null && !evt.entityPlayer.canPlayerEdit(hitX, hitY, hitZ, evt.target.sideHit, evt.current))
 				return;
 
-			int bID = evt.world.getBlockId(hitX, hitY, hitZ);
+			Block bID = evt.world.getBlock(hitX, hitY, hitZ);
 			for (int id = 0; id < TRepo.fluidBlocks.length; id++)
-				if (bID == TRepo.fluidBlocks[id].blockID)
+				if (bID == TRepo.fluidBlocks[id])
 					if (evt.entityPlayer.capabilities.isCreativeMode)
 						evt.world.setBlockToAir(hitX, hitY, hitZ);
 					else
@@ -182,7 +183,7 @@ public class IguanaEventHandler {
 							for (int posX = -1; posX <= 1; posX++)
 								for (int posZ = -1; posZ <= 1; posZ++)
 								{
-									int localID = evt.world.getBlockId(hitX + posX, hitY, hitZ + posZ);
+									Block localID = evt.world.getBlock(hitX + posX, hitY, hitZ + posZ);
 									if (localID == bID)
 										quanta += evt.world.getBlockMetadata(hitX + posX, hitY, hitZ + posZ) + 1;
 								}
@@ -192,7 +193,7 @@ public class IguanaEventHandler {
 									for (int posX = -1; posX <= 1; posX++)
 										for (int posZ = -1; posZ <= 1; posZ++)
 										{
-											int localID = evt.world.getBlockId(hitX + posX, hitY, hitZ + posZ);
+											Block localID = evt.world.getBlock(hitX + posX, hitY, hitZ + posZ);
 											if (localID == bID)
 											{
 												quanta -= 1;
@@ -206,7 +207,7 @@ public class IguanaEventHandler {
 						} else
 							evt.world.setBlockToAir(hitX, hitY, hitZ);
 
-						evt.setResult(net.minecraftforge.event.Event.Result.ALLOW);
+						evt.setResult(Result.ALLOW);
 						evt.result = new ItemStack(IguanaItems.clayBuckets, 1, id);
 					}
 		}
@@ -414,7 +415,7 @@ public class IguanaEventHandler {
 				while (it.hasNext())
 				{
 					ItemStack stack = (ItemStack) it.next();
-					if (stack != null && stack.isItemEqual(new ItemStack(Item.flint)))
+					if (stack != null && stack.isItemEqual(new ItemStack(Items.flint)))
 					{
 						it.remove();
 						addGravel = true;

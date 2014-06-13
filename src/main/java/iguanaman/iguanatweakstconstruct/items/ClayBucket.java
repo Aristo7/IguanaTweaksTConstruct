@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumMovingObjectType;
@@ -54,7 +55,7 @@ public class ClayBucket extends ItemBucket {
 				return par1ItemStack;
 			}
 
-			if (movingobjectposition.typeOfHit == EnumMovingObjectType.TILE)
+			if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY)
 			{
 				int i = movingobjectposition.blockX;
 				int j = movingobjectposition.blockY;
@@ -63,12 +64,12 @@ public class ClayBucket extends ItemBucket {
 				if (!par2World.canMineBlock(par3EntityPlayer, i, j, k))
 					return par1ItemStack;
 
-				if (isFull == 0)
+				if (Contents == null)
 				{
 					if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
 						return par1ItemStack;
 
-					if (par2World.getBlockMaterial(i, j, k) == Material.water && par2World.getBlockMetadata(i, j, k) == 0)
+					if (par2World.getBlock(i, j, k).getMaterial() == Material.water && par2World.getBlockMetadata(i, j, k) == 0)
 					{
 						par2World.setBlockToAir(i, j, k);
 
@@ -79,12 +80,12 @@ public class ClayBucket extends ItemBucket {
 							return new ItemStack(IguanaItems.clayBucketWater);
 
 						if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(IguanaItems.clayBucketWater)))
-							par3EntityPlayer.dropPlayerItem(new ItemStack(IguanaItems.clayBucketWater.itemID, 1, 0));
+							par3EntityPlayer.dropItem(IguanaItems.clayBucketWater, 1);
 
 						return par1ItemStack;
 					}
 
-					if (par2World.getBlockMaterial(i, j, k) == Material.lava && par2World.getBlockMetadata(i, j, k) == 0)
+					if (par2World.getBlock(i, j, k).getMaterial() == Material.lava && par2World.getBlockMetadata(i, j, k) == 0)
 					{
 						par2World.setBlockToAir(i, j, k);
 
@@ -95,15 +96,15 @@ public class ClayBucket extends ItemBucket {
 							return new ItemStack(IguanaItems.clayBucketLava);
 
 						if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(IguanaItems.clayBucketLava)))
-							par3EntityPlayer.dropPlayerItem(new ItemStack(IguanaItems.clayBucketLava.itemID, 1, 0));
+							par3EntityPlayer.dropItem(IguanaItems.clayBucketLava, 1);
 
 						return par1ItemStack;
 					}
 				}
 				else
 				{
-					if (isFull < 0)
-						return new ItemStack(IguanaItems.clayBucketFired);
+//					if (Contents < 0)
+//						return new ItemStack(IguanaItems.clayBucketFired);
 
 					if (movingobjectposition.sideHit == 0)
 						--j;
@@ -127,14 +128,14 @@ public class ClayBucket extends ItemBucket {
 						return par1ItemStack;
 
 					if (tryPlaceContainedLiquid(par2World, i, j, k) && !par3EntityPlayer.capabilities.isCreativeMode)
-						if (isFull == Block.lavaMoving.blockID) {
+						if (Contents == Blocks.lava) {
 							--par1ItemStack.stackSize;
 							return par1ItemStack;
 						} else
 							return new ItemStack(IguanaItems.clayBucketFired);
 				}
 			}
-			else if (isFull == 0 && movingobjectposition.entityHit instanceof EntityCow)
+			else if (Contents == null && movingobjectposition.entityHit instanceof EntityCow)
 				return new ItemStack(IguanaItems.clayBucketMilk);
 
 			return par1ItemStack;
