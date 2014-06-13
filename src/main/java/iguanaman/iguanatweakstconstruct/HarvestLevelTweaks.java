@@ -80,8 +80,8 @@ public class HarvestLevelTweaks {
 			if (item != null && toolClass.equals("pickaxe"))
 			{
 
-				if (IguanaConfig.pickaxeOverrides.containsKey(item.itemID))
-					harvestLevel = IguanaConfig.pickaxeOverrides.get(item.itemID);
+				if (IguanaConfig.pickaxeOverrides.containsKey(Item.getIdFromItem(item)))
+					harvestLevel = IguanaConfig.pickaxeOverrides.get(Item.getIdFromItem(item));
 
 				switch (harvestLevel)
 				{

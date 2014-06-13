@@ -16,8 +16,10 @@ import net.minecraftforge.event.entity.player.FillBucketEvent;
 
 public class ClayBucket extends ItemBucket {
 
-	public ClayBucket(int par1, int par2) {
-		super(par1, par2);
+	Block Contents = null;
+	public ClayBucket(Block par1) {
+		super(par1);
+		Contents = par1;
 	}
 
 	/**
@@ -27,7 +29,7 @@ public class ClayBucket extends ItemBucket {
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
 		float f = 1.0F;
-		boolean flag = isFull == 0;
+		boolean flag = Contents == null;
 		MovingObjectPosition movingobjectposition = getMovingObjectPositionFromPlayer(par2World, par3EntityPlayer, flag);
 
 		if (movingobjectposition == null)
@@ -38,7 +40,7 @@ public class ClayBucket extends ItemBucket {
 			if (MinecraftForge.EVENT_BUS.post(event))
 				return par1ItemStack;
 
-			if (event.getResult() == Event.Result.ALLOW)
+			if (event.getResult() == cpw.mods.fml.common.eventhandler.Event.Result.ALLOW)
 			{
 				if (par3EntityPlayer.capabilities.isCreativeMode)
 					return par1ItemStack;
@@ -47,7 +49,7 @@ public class ClayBucket extends ItemBucket {
 					return event.result;
 
 				if (!par3EntityPlayer.inventory.addItemStackToInventory(event.result))
-					par3EntityPlayer.dropPlayerItem(event.result);
+					par3EntityPlayer.dropItem(event.result.getItem(), 1);
 
 				return par1ItemStack;
 			}
