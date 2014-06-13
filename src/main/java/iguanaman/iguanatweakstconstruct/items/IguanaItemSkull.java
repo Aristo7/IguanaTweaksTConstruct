@@ -20,8 +20,8 @@ public class IguanaItemSkull extends ItemSkull {
 	private static final String[] skullTypes = new String[] {"skeleton", "wither", "zombie", "char", "creeper", "enderman", "pigman", "blaze"};
 	public static final String[] field_94587_a = new String[] {"skeleton", "wither", "zombie", "steve", "creeper", "skull_enderman", "skull_pigman", "skull_blaze"};
 
-	public IguanaItemSkull(int par1) {
-		super(par1);
+	public IguanaItemSkull() {
+		super();
 	}
 
 	/**

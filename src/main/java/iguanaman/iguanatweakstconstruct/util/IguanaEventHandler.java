@@ -26,13 +26,11 @@ import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.EnumMovingObjectType;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.event.EventPriority;
-import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -118,7 +116,7 @@ public class IguanaEventHandler {
 				if (eitem.getEntityItem() != null)
 				{
 					ItemStack item = eitem.getEntityItem();
-					if (item.itemID == Item.skull.itemID && item.getItemDamage() != 3)
+					if (item.isItemEqual(new ItemStack(Items.skull)) && item.getItemDamage() != 3)
 						i.remove();
 				}
 		}
@@ -154,7 +152,7 @@ public class IguanaEventHandler {
 				}
 
 				if (random.nextInt(100) < beheading * IguanaConfig.beheadingHeadDropChance + IguanaConfig.baseHeadDropChance)
-					addDrops(event, new ItemStack(Item.skull.itemID, 1, skullID));
+					addDrops(event, new ItemStack(Items.skull, 1, skullID));
 			}
 		}
 	}
@@ -221,11 +219,11 @@ public class IguanaEventHandler {
 		{
 			ItemStack equipped = event.entityPlayer.getCurrentEquippedItem();
 			{
-				if (equipped != null && equipped.itemID == IguanaItems.clayBucketFired.itemID)
+				if (equipped != null && equipped.isItemEqual(new ItemStack(IguanaItems.clayBucketFired)))
 					if (--equipped.stackSize <= 0)
 						event.entityPlayer.setCurrentItemOrArmor(0, new ItemStack(IguanaItems.clayBucketMilk));
 					else if (!event.entityPlayer.inventory.addItemStackToInventory(new ItemStack(IguanaItems.clayBucketMilk)))
-						event.entityPlayer.dropPlayerItem(new ItemStack(IguanaItems.clayBucketMilk));
+						event.entityPlayer.dropItem(IguanaItems.clayBucketMilk, 1);
 			}
 		}
 	}
@@ -416,14 +414,14 @@ public class IguanaEventHandler {
 				while (it.hasNext())
 				{
 					ItemStack stack = (ItemStack) it.next();
-					if (stack != null && stack.itemID == Item.flint.itemID)
+					if (stack != null && stack.isItemEqual(new ItemStack(Item.flint)))
 					{
 						it.remove();
 						addGravel = true;
 					}
 				}
 
-				if (addGravel) event.drops.add(new ItemStack(Block.gravel));
+				if (addGravel) event.drops.add(new ItemStack(Blocks.gravel));
 			}
 	}
 

@@ -1,6 +1,7 @@
 package iguanaman.iguanatweakstconstruct.util;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
@@ -10,7 +11,7 @@ import tconstruct.library.crafting.PatternBuilder;
 
 public class IguanaPartBuildRecipe implements IRecipe {
 
-	ItemStack placeholder = new ItemStack(Block.stone);
+	ItemStack placeholder = new ItemStack(Blocks.stone);
 	ItemStack output = null;
 
 	@Override
@@ -31,7 +32,7 @@ public class IguanaPartBuildRecipe implements IRecipe {
 			{
 				// is the item in the slot a wood pattern?
 				boolean isPattern = false;
-				if (slot.getItem().itemID == TRepo.woodPattern.itemID) isPattern = true;
+				if (slot.isItemEqual(new ItemStack(TRepo.woodPattern))) isPattern = true;
 
 				// too many items
 				if (material != null && pattern != null || material != null && !isPattern) return false;

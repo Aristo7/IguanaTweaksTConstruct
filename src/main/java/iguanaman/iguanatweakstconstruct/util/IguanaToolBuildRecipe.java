@@ -4,6 +4,7 @@ import iguanaman.iguanatweakstconstruct.configs.IguanaConfig;
 
 import java.util.ArrayList;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.block.Block;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,7 @@ import tconstruct.library.tools.ToolCore;
 
 public class IguanaToolBuildRecipe implements IRecipe {
 
-	ItemStack placeholder = new ItemStack(Block.stone);
+	ItemStack placeholder = new ItemStack(Blocks.stone);
 	ItemStack output = null;
 
 	@Override

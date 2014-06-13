@@ -453,7 +453,7 @@ public class IguanaToolStationGui extends NewContainerGui
 	@Override
 	protected void keyTyped (char par1, int keyCode)
 	{
-		if (keyCode == 1 || !active && keyCode == mc.gameSettings.keyBindInventory.keyCode)
+		if (keyCode == 1 || !active && keyCode == mc.gameSettings.keyBindInventory.getKeyCode())
 		{
 			logic.setToolname("");
 			updateServer("");
@@ -476,7 +476,7 @@ public class IguanaToolStationGui extends NewContainerGui
 		try
 		{
 			outputStream.writeByte(1);
-			outputStream.writeInt(logic.worldObj.provider.dimensionId);
+			outputStream.writeInt(logic.getWorldObj().provider.dimensionId);
 			outputStream.writeInt(logic.xCoord);
 			outputStream.writeInt(logic.yCoord);
 			outputStream.writeInt(logic.zCoord);
