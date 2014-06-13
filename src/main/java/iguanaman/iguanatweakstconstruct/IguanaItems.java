@@ -56,7 +56,7 @@ public class IguanaItems {
 		clayBucketLava = new ClayBucket(Blocks.lava).setUnlocalizedName(
 				"iguanatweakstconstruct:clayBucketLava").setTextureName(
 				"iguanatweakstconstruct:clayBucketLava");
-		clayBucketMilk = new ClayBucketMilk(IguanaConfig.clayBucketMilkId)
+		clayBucketMilk = new ClayBucketMilk()
 				.setUnlocalizedName("iguanatweakstconstruct:clayBucketMilk")
 				.setTextureName("iguanatweakstconstruct:clayBucketMilk")
 				.setContainerItem(clayBucketFired);
