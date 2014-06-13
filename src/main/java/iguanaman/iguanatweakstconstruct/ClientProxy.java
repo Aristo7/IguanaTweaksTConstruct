@@ -35,15 +35,15 @@ public class ClientProxy extends CommonProxy {
 	public Object getClientGuiElement (int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
 		if (ID == TProxyCommon.toolStationID)
-			return new IguanaToolStationGui(player.inventory, (ToolStationLogic) world.getBlock(x, y, z), world, x, y, z);
+			return new IguanaToolStationGui(player.inventory, (ToolStationLogic) world.getTileEntity(x, y, z), world, x, y, z);
 		if (ID == TProxyCommon.partBuilderID)
-			return new IguanaPartCrafterGui(player.inventory, (PartBuilderLogic) world.getBlock(x, y, z), world, x, y, z);
+			return new IguanaPartCrafterGui(player.inventory, (PartBuilderLogic) world.getTileEntity(x, y, z), world, x, y, z);
 		if (ID == TProxyCommon.patternChestID)
-			return new PatternChestGui(player.inventory, (PatternChestLogic) world.getBlock(x, y, z), world, x, y, z);
+			return new PatternChestGui(player.inventory, (PatternChestLogic) world.getTileEntity(x, y, z), world, x, y, z);
 		if (ID == TProxyCommon.toolForgeID)
-			return new IguanaToolForgeGui(player.inventory, (ToolForgeLogic) world.getBlock(x, y, z), world, x, y, z);
+			return new IguanaToolForgeGui(player.inventory, (ToolForgeLogic) world.getTileEntity(x, y, z), world, x, y, z);
 		if (ID == TProxyCommon.stencilTableID)
-			return new StencilTableGui(player.inventory, (StencilTableLogic) world.getBlock(x, y, z), world, x, y, z);
+			return new StencilTableGui(player.inventory, (StencilTableLogic) world.getTileEntity(x, y, z), world, x, y, z);
 
 		return null;
 	}

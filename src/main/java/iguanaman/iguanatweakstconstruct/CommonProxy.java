@@ -20,7 +20,7 @@ public class CommonProxy implements IGuiHandler
 		if (ID == TProxyCommon.toolStationID || ID == TProxyCommon.partBuilderID || ID == TProxyCommon.patternChestID
 				|| ID == TProxyCommon.toolForgeID || ID == TProxyCommon.stencilTableID)
 		{
-			TileEntity tile = world.getBlockTileEntity(x, y, z);
+			TileEntity tile = world.getTileEntity(x, y, z);
 			if (tile != null && tile instanceof InventoryLogic)
 				return ((InventoryLogic) tile).getGuiContainer(player.inventory, world, x, y, z);
 		}
