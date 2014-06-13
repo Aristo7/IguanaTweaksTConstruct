@@ -49,13 +49,11 @@ public class IguanaItems {
 				.setUnlocalizedName("iguanatweakstconstruct:clayBucketFired")
 				.setTextureName("iguanatweakstconstruct:clayBucketFired")
 				.setMaxStackSize(16);
-		clayBucketWater = new ClayBucket(IguanaConfig.clayBucketWaterId,
-				Blocks.water)
+		clayBucketWater = new ClayBucket(Blocks.water)
 				.setUnlocalizedName("iguanatweakstconstruct:clayBucketWater")
 				.setTextureName("iguanatweakstconstruct:clayBucketWater")
 				.setContainerItem(clayBucketFired);
-		clayBucketLava = new ClayBucket(IguanaConfig.clayBucketLavaId,
-				Block.lavaMoving.blockID).setUnlocalizedName(
+		clayBucketLava = new ClayBucket(Blocks.lava).setUnlocalizedName(
 				"iguanatweakstconstruct:clayBucketLava").setTextureName(
 				"iguanatweakstconstruct:clayBucketLava");
 		clayBucketMilk = new ClayBucketMilk(IguanaConfig.clayBucketMilkId)

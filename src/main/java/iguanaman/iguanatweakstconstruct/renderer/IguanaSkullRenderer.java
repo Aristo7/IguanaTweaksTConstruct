@@ -14,7 +14,7 @@ public class IguanaSkullRenderer extends TileEntitySkullRenderer {
 	public IguanaSkullRenderer() {}
 
 	@Override
-	public void func_82393_a(float par1, float par2, float par3, int par4, float par5, int par6, String par7Str)
+	public void func_147530_a(float par1, float par2, float par3, int par4, float par5, int par6, String par7Str)
 	{
 		ModelSkeletonHead modelskeletonhead = new ModelSkeletonHead(0, 0, 64, 32);
 

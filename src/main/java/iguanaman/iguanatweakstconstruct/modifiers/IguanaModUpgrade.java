@@ -32,176 +32,233 @@ import tconstruct.library.tools.ToolMod;
 
 public class IguanaModUpgrade extends ToolMod {
 
-
-	public IguanaModUpgrade()
-	{
+	public IguanaModUpgrade() {
 		super(new ItemStack[0], 0, "");
 	}
 
 	@Override
-	public boolean matches (ItemStack[] input, ItemStack tool)
-	{
-		if (!canModify(tool, input)) return false;
+	public boolean matches(ItemStack[] input, ItemStack tool) {
+		if (!canModify(tool, input))
+			return false;
 		return true;
 	}
 
-	protected ToolRecipe GetRecipe(ToolCore tool)
-	{
+	protected ToolRecipe GetRecipe(ToolCore tool) {
 		if (tool instanceof Shortbow)
-			return new BowRecipe(TRepo.toolRod, TRepo.bowstring, TRepo.toolRod, TRepo.shortbow);
+			return new BowRecipe(TRepo.toolRod, TRepo.bowstring, TRepo.toolRod,
+					TRepo.shortbow);
 		else
 			return ToolBuilder.instance.recipeList.get(tool.getToolName());
 	}
 
 	@Override
-	protected boolean canModify (ItemStack tool, ItemStack[] input)
-	{
+	protected boolean canModify(ItemStack tool, ItemStack[] input) {
 		// basic checks
-		if (tool == null || tool.getItem() == null || !(tool.getItem() instanceof ToolCore)) return false;
+		if (tool == null || tool.getItem() == null
+				|| !(tool.getItem() instanceof ToolCore))
+			return false;
 		NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-		if (tags.getInteger("Damage") > 0) return false;
+		if (tags.getInteger("Damage") > 0)
+			return false;
 
 		// Get tool recipe
-		ToolCore toolItem = (ToolCore)tool.getItem();
+		ToolCore toolItem = (ToolCore) tool.getItem();
 		ToolRecipe toolRecipe = GetRecipe(toolItem);
-		if (toolRecipe == null) return false;
+		if (toolRecipe == null)
+			return false;
 
-		//get old tool part materials
+		// get old tool part materials
 		int oldHead = tags.getInteger("Head");
 		int oldHandle = tags.getInteger("Handle");
 		int oldAccessory = tags.getInteger("Accessory");
 		int oldExtra = tags.getInteger("Extra");
 
 		// check which parts are Writable
-		String headAbility = TConstructRegistry.getMaterial(tags.getInteger("Head")).ability;
-		boolean headWritable = headAbility.equals("Writable") || headAbility.equals("Thaumic") ? true : false;
-		String handleAbility = TConstructRegistry.getMaterial(tags.getInteger("Handle")).ability;
-		boolean handleWritable = handleAbility.equals("Writable") || headAbility.equals("Thaumic") ? true : false;
+		String headAbility = TConstructRegistry.getMaterial(tags
+				.getInteger("Head")).ability;
+		boolean headWritable = headAbility.equals("Writable")
+				|| headAbility.equals("Thaumic") ? true : false;
+		String handleAbility = TConstructRegistry.getMaterial(tags
+				.getInteger("Handle")).ability;
+		boolean handleWritable = handleAbility.equals("Writable")
+				|| headAbility.equals("Thaumic") ? true : false;
 
 		boolean accessoryWritable = false;
-		if (tags.hasKey("Accessory"))
-		{
-			String accessoryAbility = TConstructRegistry.getMaterial(tags.getInteger("Accessory")).ability;
-			if (accessoryAbility.equals("Writable") || accessoryAbility.equals("Thaumic")) accessoryWritable = true;
+		if (tags.hasKey("Accessory")) {
+			String accessoryAbility = TConstructRegistry.getMaterial(tags
+					.getInteger("Accessory")).ability;
+			if (accessoryAbility.equals("Writable")
+					|| accessoryAbility.equals("Thaumic"))
+				accessoryWritable = true;
 		}
 
 		boolean extraWritable = false;
-		if (tags.hasKey("Extra"))
-		{
-			String extraAbility = TConstructRegistry.getMaterial(tags.getInteger("Extra")).ability;
-			if (extraAbility.equals("Writable") || extraAbility.equals("Thaumic")) extraWritable = true;
+		if (tags.hasKey("Extra")) {
+			String extraAbility = TConstructRegistry.getMaterial(tags
+					.getInteger("Extra")).ability;
+			if (extraAbility.equals("Writable")
+					|| extraAbility.equals("Thaumic"))
+				extraWritable = true;
 		}
 
 		// check if trying to replace irreplacable parts
 		int modifiersNeeded = 0;
 		List<String> replacing = new ArrayList<String>();
 		for (ItemStack inputStack : input)
-			if (inputStack != null)
-			{
+			if (inputStack != null) {
 				int partIndex = -1;
 
 				// Make sure all inputs are valid parts
 				if (!(toolRecipe.validHead(inputStack.getItem())
 						|| toolRecipe.validHandle(inputStack.getItem())
-						|| toolRecipe.validAccessory(inputStack.getItem())
-						|| toolRecipe.validExtra(inputStack.getItem()))
-						)
+						|| toolRecipe.validAccessory(inputStack.getItem()) || toolRecipe
+							.validExtra(inputStack.getItem())))
 					return false;
 
-
 				// Check for duplicates, same parts and count modifiers needed
-				if (toolRecipe.validHead(inputStack.getItem()))
-				{
-					if (replacing.contains("Head") && (tool.getItem() instanceof Shortbow || tool.getItem() instanceof Battleaxe)){
-						if (replacing.contains("Accessory") || inputStack.getItemDamage() == oldAccessory) return false;
-						
-						String ability = TConstructRegistry.getMaterial(inputStack.getItemDamage()).ability;
-						boolean newAccessoryWritable = ability.equals("Writable") || ability.equals("Thaumic") ? true : false;
-						if (accessoryWritable && !newAccessoryWritable) modifiersNeeded += 1;
+				if (toolRecipe.validHead(inputStack.getItem())) {
+					if (replacing.contains("Head")
+							&& (tool.getItem() instanceof Shortbow || tool
+									.getItem() instanceof Battleaxe)) {
+						if (replacing.contains("Accessory")
+								|| inputStack.getItemDamage() == oldAccessory)
+							return false;
 
-						partIndex = IguanaTweaksTConstruct.toolParts.indexOf(toolItem.getAccessoryItem());
+						String ability = TConstructRegistry
+								.getMaterial(inputStack.getItemDamage()).ability;
+						boolean newAccessoryWritable = ability
+								.equals("Writable")
+								|| ability.equals("Thaumic") ? true : false;
+						if (accessoryWritable && !newAccessoryWritable)
+							modifiersNeeded += 1;
+
+						partIndex = IguanaTweaksTConstruct.toolParts
+								.indexOf(toolItem.getAccessoryItem());
 
 						replacing.add("Accessory");
 					} else {
-						if (replacing.contains("Head") || (inputStack.getItemDamage() == oldHead  && !(tool.getItem() instanceof Shortbow || tool.getItem() instanceof Battleaxe))) return false;
+						if (replacing.contains("Head")
+								|| (inputStack.getItemDamage() == oldHead && !(tool
+										.getItem() instanceof Shortbow || tool
+										.getItem() instanceof Battleaxe)))
+							return false;
 
-						String ability = TConstructRegistry.getMaterial(inputStack.getItemDamage()).ability;
-						boolean newHeadWritable = ability.equals("Writable") || ability.equals("Thaumic") ? true : false;
-						if (headWritable && !newHeadWritable) modifiersNeeded += 1;
+						String ability = TConstructRegistry
+								.getMaterial(inputStack.getItemDamage()).ability;
+						boolean newHeadWritable = ability.equals("Writable")
+								|| ability.equals("Thaumic") ? true : false;
+						if (headWritable && !newHeadWritable)
+							modifiersNeeded += 1;
 
-						partIndex = IguanaTweaksTConstruct.toolParts.indexOf(toolItem.getHeadItem());
+						partIndex = IguanaTweaksTConstruct.toolParts
+								.indexOf(toolItem.getHeadItem());
 
 						replacing.add("Head");
 					}
-				}
-				else if (toolRecipe.validHandle(inputStack.getItem()))
-				{
-					if (replacing.contains("Handle") && (tool.getItem() instanceof Scythe || tool.getItem() instanceof Cleaver)){
-						if (replacing.contains("Extra") || inputStack.getItemDamage() == oldExtra) return false;
+				} else if (toolRecipe.validHandle(inputStack.getItem())) {
+					if (replacing.contains("Handle")
+							&& (tool.getItem() instanceof Scythe || tool
+									.getItem() instanceof Cleaver)) {
+						if (replacing.contains("Extra")
+								|| inputStack.getItemDamage() == oldExtra)
+							return false;
 
-						String ability = TConstructRegistry.getMaterial(inputStack.getItemDamage()).ability;
-						boolean newExtraWritable = ability.equals("Writable") || ability.equals("Thaumic") ? true : false;
-						if (extraWritable && !newExtraWritable) modifiersNeeded += 1;
+						String ability = TConstructRegistry
+								.getMaterial(inputStack.getItemDamage()).ability;
+						boolean newExtraWritable = ability.equals("Writable")
+								|| ability.equals("Thaumic") ? true : false;
+						if (extraWritable && !newExtraWritable)
+							modifiersNeeded += 1;
 
-						partIndex = IguanaTweaksTConstruct.toolParts.indexOf(toolItem.getExtraItem());
+						partIndex = IguanaTweaksTConstruct.toolParts
+								.indexOf(toolItem.getExtraItem());
 
 						replacing.add("Extra");
 					} else {
-						if (replacing.contains("Handle") || (inputStack.getItemDamage() == oldHandle && !(tool.getItem() instanceof Scythe || tool.getItem() instanceof Cleaver))) return false;
+						if (replacing.contains("Handle")
+								|| (inputStack.getItemDamage() == oldHandle && !(tool
+										.getItem() instanceof Scythe || tool
+										.getItem() instanceof Cleaver)))
+							return false;
 
-						String ability = TConstructRegistry.getMaterial(inputStack.getItemDamage()).ability;
-						boolean newHandleWritable = ability.equals("Writable") || ability.equals("Thaumic") ? true : false;
-						if (handleWritable && !newHandleWritable) modifiersNeeded += 1;
+						String ability = TConstructRegistry
+								.getMaterial(inputStack.getItemDamage()).ability;
+						boolean newHandleWritable = ability.equals("Writable")
+								|| ability.equals("Thaumic") ? true : false;
+						if (handleWritable && !newHandleWritable)
+							modifiersNeeded += 1;
 
-						partIndex = IguanaTweaksTConstruct.toolParts.indexOf(toolItem.getHandleItem());
+						partIndex = IguanaTweaksTConstruct.toolParts
+								.indexOf(toolItem.getHandleItem());
 
 						replacing.add("Handle");
 					}
-				}
-				else if (toolRecipe.validAccessory(inputStack.getItem()))
-				{
-					if (replacing.contains("Accessory") && tool.getItem() instanceof Hammer){
-						if (replacing.contains("Extra") || inputStack.getItemDamage() == oldExtra) return false;
+				} else if (toolRecipe.validAccessory(inputStack.getItem())) {
+					if (replacing.contains("Accessory")
+							&& tool.getItem() instanceof Hammer) {
+						if (replacing.contains("Extra")
+								|| inputStack.getItemDamage() == oldExtra)
+							return false;
 
-						String ability = TConstructRegistry.getMaterial(inputStack.getItemDamage()).ability;
-						boolean newExtraWritable = ability.equals("Writable") || ability.equals("Thaumic") ? true : false;
-						if (extraWritable && !newExtraWritable) modifiersNeeded += 1;
+						String ability = TConstructRegistry
+								.getMaterial(inputStack.getItemDamage()).ability;
+						boolean newExtraWritable = ability.equals("Writable")
+								|| ability.equals("Thaumic") ? true : false;
+						if (extraWritable && !newExtraWritable)
+							modifiersNeeded += 1;
 
-						partIndex = IguanaTweaksTConstruct.toolParts.indexOf(toolItem.getExtraItem());
+						partIndex = IguanaTweaksTConstruct.toolParts
+								.indexOf(toolItem.getExtraItem());
 
 						replacing.add("Extra");
 					} else {
-						if (replacing.contains("Accessory") || (inputStack.getItemDamage() == oldAccessory && !(tool.getItem() instanceof Hammer))) return false;
+						if (replacing.contains("Accessory")
+								|| (inputStack.getItemDamage() == oldAccessory && !(tool
+										.getItem() instanceof Hammer)))
+							return false;
 
-						String ability = TConstructRegistry.getMaterial(inputStack.getItemDamage()).ability;
-						boolean newAccessoryWritable = ability.equals("Writable") || ability.equals("Thaumic") ? true : false;
-						if (accessoryWritable && !newAccessoryWritable) modifiersNeeded += 1;
+						String ability = TConstructRegistry
+								.getMaterial(inputStack.getItemDamage()).ability;
+						boolean newAccessoryWritable = ability
+								.equals("Writable")
+								|| ability.equals("Thaumic") ? true : false;
+						if (accessoryWritable && !newAccessoryWritable)
+							modifiersNeeded += 1;
 
-						partIndex = IguanaTweaksTConstruct.toolParts.indexOf(toolItem.getAccessoryItem());
+						partIndex = IguanaTweaksTConstruct.toolParts
+								.indexOf(toolItem.getAccessoryItem());
 
 						replacing.add("Accessory");
 					}
-				}
-				else if (toolRecipe.validExtra(inputStack.getItem()))
-				{
-					if (replacing.contains("Extra") || inputStack.getItemDamage() == oldExtra) return false;
+				} else if (toolRecipe.validExtra(inputStack.getItem())) {
+					if (replacing.contains("Extra")
+							|| inputStack.getItemDamage() == oldExtra)
+						return false;
 
-					String ability = TConstructRegistry.getMaterial(inputStack.getItemDamage()).ability;
-					boolean newExtraWritable = ability.equals("Writable") || ability.equals("Thaumic") ? true : false;
-					if (extraWritable && !newExtraWritable) modifiersNeeded += 1;
+					String ability = TConstructRegistry.getMaterial(inputStack
+							.getItemDamage()).ability;
+					boolean newExtraWritable = ability.equals("Writable")
+							|| ability.equals("Thaumic") ? true : false;
+					if (extraWritable && !newExtraWritable)
+						modifiersNeeded += 1;
 
-					partIndex = IguanaTweaksTConstruct.toolParts.indexOf(toolItem.getExtraItem());
+					partIndex = IguanaTweaksTConstruct.toolParts
+							.indexOf(toolItem.getExtraItem());
 
 					replacing.add("Extra");
 				}
 
 				// Check for stone parts
 				if (inputStack.getItemDamage() == 1)
-					if (!IguanaConfig.allowStoneTools || IguanaConfig.restrictedFlintParts.contains(partIndex+1)) return false;
+					if (!IguanaConfig.allowStoneTools
+							|| IguanaConfig.restrictedFlintParts
+									.contains(partIndex + 1))
+						return false;
 			}
 
 		// Check if have enough free modifiers to replace written/thaumic parts
-		if (tags.getInteger("Modifiers") < modifiersNeeded) return false;
+		if (tags.getInteger("Modifiers") < modifiersNeeded)
+			return false;
 
 		return true;
 	}
@@ -432,8 +489,10 @@ public class IguanaModUpgrade extends ToolMod {
 		{
 			if (tags.hasKey("Emerald") && tags.getInteger("HarvestLevel") < TConstructRegistry.getMaterial("Bronze").harvestLevel())
 				tags.setInteger("HarvestLevel", TConstructRegistry.getMaterial("Bronze").harvestLevel());
-			if (tags.hasKey("Diamond") && ModifierConfig.diamondPickaxeBoost && tags.getInteger("HarvestLevel") < MinecraftForge.getBlockHarvestLevel(Blocks.obsidian, 0, "pickaxe"))
-				tags.setInteger("HarvestLevel", MinecraftForge.getBlockHarvestLevel(Blocks.obsidian, 0, "pickaxe"));
+			if (tags.hasKey("Diamond")
+					&& ModifierConfig.diamondPickaxeBoost
+					&& tags.getInteger("HarvestLevel") < Blocks.obsidian.getHarvestLevel(0))
+				tags.setInteger("HarvestLevel", Blocks.obsidian.getHarvestLevel(0));
 					
 			String mLevel = IguanaTweaksTConstruct.getHarvestLevelName(tags.getInteger("HarvestLevel"));
 			tips.add("Mining Level: " + mLevel);
@@ -513,16 +572,17 @@ public class IguanaModUpgrade extends ToolMod {
 		if (tool.getDisplayName().endsWith(materialName + toolName))
 		{
 			materialName = TConstructRegistry.getMaterial(tags.getInteger("Head")).displayName;
-			tool.setItemName("\u00a7r" + materialName + toolName);
+			//tool.setItemName("\u00a7r" + materialName + toolName);
 		}
 	}
 
 	@Override
-	public void addMatchingEffect (ItemStack tool) {}
+	public void addMatchingEffect(ItemStack tool) {
+	}
 
-	/////// GREG - COME BACK HERE
-	int buildReinforced (TToolMaterial headMat, TToolMaterial handleMat, TToolMaterial accessoryMat, TToolMaterial extraMat)
-	{
+	// ///// GREG - COME BACK HERE
+	int buildReinforced(TToolMaterial headMat, TToolMaterial handleMat,
+			TToolMaterial accessoryMat, TToolMaterial extraMat) {
 		int reinforced = 0;
 
 		int dHead = headMat.reinforced();

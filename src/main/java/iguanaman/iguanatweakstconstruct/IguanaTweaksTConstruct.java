@@ -27,12 +27,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
-import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
 @Mod(modid="IguanaTweaksTConstruct", name="TiC Tweaks", version="1.6.X-1.0.2)",
 dependencies = "required-after:TConstruct;after:*")
-@NetworkMod(clientSideRequired=true, serverSideRequired=true)
+//@NetworkMod(clientSideRequired=true, serverSideRequired=true)
 public class IguanaTweaksTConstruct {
 
 	// The instance of your mod that Forge uses.
@@ -89,7 +88,7 @@ public class IguanaTweaksTConstruct {
 		VariousTweaks.init();
 		RemoveVanillaTools.init();
 
-		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, proxy);
 		
 		IguanaLog.log("Starting event handler");
 		MinecraftForge.EVENT_BUS.register(new IguanaEventHandler());
