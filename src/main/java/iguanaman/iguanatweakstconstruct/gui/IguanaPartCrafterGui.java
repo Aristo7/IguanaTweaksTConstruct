@@ -180,7 +180,7 @@ public class IguanaPartCrafterGui extends NewContainerGui
 	@Override
 	protected void mouseClicked (int mouseX, int mouseY, int clickNum)
 	{
-		boolean flag = clickNum == mc.gameSettings.keyBindPickBlock.keyCode + 100;
+		boolean flag = clickNum == mc.gameSettings.keyBindPickBlock.getKeyCode() + 100;
 		Slot slot = getSlotAtPosition(mouseX, mouseY);
 		long l = Minecraft.getSystemTime();
 		field_94074_J = field_94072_H == slot && l - field_94070_G < 250L && field_94073_I == clickNum;
@@ -221,7 +221,7 @@ public class IguanaPartCrafterGui extends NewContainerGui
 				else if (!field_94076_q)
 					if (mc.thePlayer.inventory.getItemStack() == null)
 					{
-						if (clickNum == mc.gameSettings.keyBindPickBlock.keyCode + 100)
+						if (clickNum == mc.gameSettings.keyBindPickBlock.getKeyCode() + 100)
 							handleMouseClick(slot, k1, clickNum, 3);
 						else
 						{

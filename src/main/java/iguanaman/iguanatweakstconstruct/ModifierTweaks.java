@@ -54,9 +54,10 @@ public class ModifierTweaks {
 //		if (ModifierConfig.moreExpensiveSilkyCloth)
 //		{
 //			RecipeRemover.removeAnyRecipe(new ItemStack(TRepo.materials, 1, 25));
-//			GameRegistry.addRecipe(new ItemStack(TRepo.materials, 1, 25), "sss", "sns", "sss", 'n', new ItemStack(TRepo.materials, 1, 14), 's', new ItemStack(Items)); //Silky Cloth
+//			GameRegistry.addRecipe(new ItemStack(TRepo.materials, 1, 25), "sss", "sns", "sss", 'n', new ItemStack(TRepo.materials, 1, 14), 's', new ItemStack(Items.silk)); //Silky Cloth
 //			GameRegistry.addRecipe(new ItemStack(TRepo.materials, 1, 25), "sss", "sns", "sss", 'n', new ItemStack(Items.gold_ingot), 's', new ItemStack(Item.silk)); //Silky Cloth
 //		}
+
 
 		if (ModifierConfig.moreExpensiveSilkyJewel)
 		{

@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
@@ -431,8 +432,8 @@ public class IguanaModUpgrade extends ToolMod {
 		{
 			if (tags.hasKey("Emerald") && tags.getInteger("HarvestLevel") < TConstructRegistry.getMaterial("Bronze").harvestLevel())
 				tags.setInteger("HarvestLevel", TConstructRegistry.getMaterial("Bronze").harvestLevel());
-			if (tags.hasKey("Diamond") && ModifierConfig.diamondPickaxeBoost && tags.getInteger("HarvestLevel") < MinecraftForge.getBlockHarvestLevel(Block.obsidian, 0, "pickaxe"))
-				tags.setInteger("HarvestLevel", MinecraftForge.getBlockHarvestLevel(Block.obsidian, 0, "pickaxe"));
+			if (tags.hasKey("Diamond") && ModifierConfig.diamondPickaxeBoost && tags.getInteger("HarvestLevel") < MinecraftForge.getBlockHarvestLevel(Blocks.obsidian, 0, "pickaxe"))
+				tags.setInteger("HarvestLevel", MinecraftForge.getBlockHarvestLevel(Blocks.obsidian, 0, "pickaxe"));
 					
 			String mLevel = IguanaTweaksTConstruct.getHarvestLevelName(tags.getInteger("HarvestLevel"));
 			tips.add("Mining Level: " + mLevel);
