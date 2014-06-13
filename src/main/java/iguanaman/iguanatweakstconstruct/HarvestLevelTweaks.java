@@ -49,6 +49,8 @@ public class HarvestLevelTweaks {
 		OreDictionary.registerOre("blockObsidian", new ItemStack(Blocks.obsidian));
 		// TOOLS
 		IguanaLog.log("Modifying harvest levels of tools");
+		//!! TODO migrate this to 1.7.2
+		/*
 		ForgeHooks hooks = new ForgeHooks();
 		Field f = null;
 		try {
@@ -253,6 +255,7 @@ public class HarvestLevelTweaks {
 				SetHarvestLevel(new ItemStack(Block.getBlockById(blockId), 1, meta), level);
 			}
 		}
+		*/
 	}
 
 	public static void SetHarvestLevel(ItemStack oreStack, int level)
