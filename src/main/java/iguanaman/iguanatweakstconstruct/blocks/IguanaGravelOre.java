@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityFallingBlock;
-import net.minecraft.entity.item.EntityFallingSand;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import tconstruct.blocks.GravelOre;

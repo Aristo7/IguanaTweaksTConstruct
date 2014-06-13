@@ -182,8 +182,8 @@ public class IguanaItems {
 		// SKULL ITEM
 		IguanaLog.log("Adding skull item");
 		//Item.itemsList[Items.skull] = null;
-		Items.skull = new IguanaItemSkull(141).setUnlocalizedName("skull")
-				.setTextureName("skull");
+		//Items.skull = new IguanaItemSkull().setUnlocalizedName("skull")
+		//		.setTextureName("skull");
 		LanguageRegistry.addName(new ItemStack(Items.skull, 1, 5),
 				"Enderman Head");
 		LanguageRegistry.addName(new ItemStack(Items.skull, 1, 6),

@@ -49,7 +49,7 @@ public class IguanaActiveToolMod extends ActiveToolMod {
 
 		//IguanaLog.log(tool.canHarvestBlock(block) + " " + Float.toString(tool.getStrVsBlock(stack, block, meta)));
 
-		if (tool.canHarvestBlock(block, stack) && tool.getDamageVsEntity() .getStrVsBlock(stack, block, meta) > 1f){
+		if (tool.canHarvestBlock(block, stack) && tool.getStrVsBlock(stack, block, meta) > 1f){
 			//IguanaLog.log("xp added");
 			if (miningSpeed > 0) tags.setInteger("MiningSpeed", miningSpeed);
 			if (miningSpeed2 > 0) tags.setInteger("MiningSpeed2", miningSpeed2);
