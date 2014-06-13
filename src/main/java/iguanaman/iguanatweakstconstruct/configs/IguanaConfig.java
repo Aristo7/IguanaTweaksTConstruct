@@ -83,27 +83,27 @@ public class IguanaConfig {
 		config.load();
 
 		// items
-		Property clayBucketUnfiredIdProperty = config.getItem("clayBucketUnfiredId", 25710);
+		Property clayBucketUnfiredIdProperty = config.get("iguana", "clayBucketUnfiredId", 25710);
 		clayBucketUnfiredIdProperty.comment = "Item ID for the unfired clay bucket";
 		clayBucketUnfiredId = clayBucketUnfiredIdProperty.getInt(25710);
 
-		Property clayBucketFiredIdProperty = config.getItem("clayBucketFiredId", 25711);
+		Property clayBucketFiredIdProperty = config.get("iguana", "clayBucketFiredId", 25711);
 		clayBucketFiredIdProperty.comment = "Item ID for the fired clay bucket";
 		clayBucketFiredId = clayBucketFiredIdProperty.getInt(25711);
 
-		Property clayBucketWaterIdProperty = config.getItem("clayBucketWaterId", 25712);
+		Property clayBucketWaterIdProperty = config.get("iguana", "clayBucketWaterId", 25712);
 		clayBucketWaterIdProperty.comment = "Item ID for the water filled clay bucket";
 		clayBucketWaterId = clayBucketWaterIdProperty.getInt(25712);
 
-		Property clayBucketLavaIdProperty = config.getItem("clayBucketLavaId", 25713);
+		Property clayBucketLavaIdProperty = config.get("iguana", "clayBucketLavaId", 25713);
 		clayBucketLavaIdProperty.comment = "Item ID for the lava filled clay bucket";
 		clayBucketLavaId = clayBucketLavaIdProperty.getInt(25713);
 
-		Property clayBucketsIdProperty = config.getItem("clayBucketsId", 25714);
+		Property clayBucketsIdProperty = config.get("iguana", "clayBucketsId", 25714);
 		clayBucketsIdProperty.comment = "Item ID for the filled clay buckets";
 		clayBucketsId = clayBucketsIdProperty.getInt(25714);
 
-		Property clayBucketMilkIdProperty = config.getItem("clayBucketMilkId", 25715);
+		Property clayBucketMilkIdProperty = config.get("iguana", "clayBucketMilkId", 25715);
 		clayBucketMilkIdProperty.comment = "Item ID for the milk filled clay bucket";
 		clayBucketMilkId = clayBucketMilkIdProperty.getInt(25715);
 

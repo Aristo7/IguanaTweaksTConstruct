@@ -51,7 +51,7 @@ public class IguanaCommandToolXP extends CommandBase {
 						IguanaLevelingLogic.updateXP(equipped, entityplayermp, toolXP + xp, headXP + xp);
 
 						if (entityplayermp != icommandsender)
-							notifyAdmins(icommandsender, 1, "Added " + xp + " to %s's tool", new Object[]{entityplayermp.getEntityName()});
+							notifyAdmins(icommandsender, 1, "Added " + xp + " to %s's tool", new Object[]{entityplayermp.getDisplayName()});
 						else
 							notifyAdmins(icommandsender, 1, "Added " + xp + " to their own tool", new Object[]{});
 					} else

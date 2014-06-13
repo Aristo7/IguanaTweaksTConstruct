@@ -41,7 +41,7 @@ public class IguanaItems {
 
 		// CLAY BUCKETS
 		IguanaLog.log("Adding clay buckets");
-		clayBucketUnfired = new Item(IguanaConfig.clayBucketUnfiredId)
+		clayBucketUnfired = new Item()
 				.setUnlocalizedName("iguanatweakstconstruct:clayBucketUnfired")
 				.setTextureName("iguanatweakstconstruct:clayBucketUnfired")
 				.setMaxStackSize(16).setCreativeTab(CreativeTabs.tabMisc);
@@ -56,7 +56,7 @@ public class IguanaItems {
 		clayBucketLava = new ClayBucket(Blocks.lava).setUnlocalizedName(
 				"iguanatweakstconstruct:clayBucketLava").setTextureName(
 				"iguanatweakstconstruct:clayBucketLava");
-		clayBucketMilk = new ClayBucketMilk(IguanaConfig.clayBucketMilkId)
+		clayBucketMilk = new ClayBucketMilk()
 				.setUnlocalizedName("iguanatweakstconstruct:clayBucketMilk")
 				.setTextureName("iguanatweakstconstruct:clayBucketMilk")
 				.setContainerItem(clayBucketFired);

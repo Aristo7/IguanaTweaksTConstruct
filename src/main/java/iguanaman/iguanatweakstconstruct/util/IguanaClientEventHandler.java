@@ -1,14 +1,14 @@
 package iguanaman.iguanatweakstconstruct.util;
 
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
-import net.minecraftforge.event.ForgeSubscribe;
 import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.Mod.EventHandler;
 
 public class IguanaClientEventHandler {
 
 
 	/* Sounds */
-	//@ForgeSubscribe
+	@EventHandler
 	public void onSound (SoundLoadEvent event)
 	{
 		try

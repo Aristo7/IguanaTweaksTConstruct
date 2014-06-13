@@ -2,12 +2,10 @@ package iguanaman.iguanatweakstconstruct.items;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import tconstruct.items.FilledBucket;
 import cpw.mods.fml.relauncher.Side;
@@ -26,7 +24,7 @@ public class ClayBucketFilled extends FilledBucket {
 	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	{
 		ItemStack result = super.onItemRightClick(par1ItemStack, par2World, par3EntityPlayer);
-		if (result.itemID == Item.bucketEmpty.itemID) {
+		if (result.isItemEqual(new ItemStack(Items.bucket))) {
 			--par1ItemStack.stackSize;
 			return par1ItemStack;
 		}

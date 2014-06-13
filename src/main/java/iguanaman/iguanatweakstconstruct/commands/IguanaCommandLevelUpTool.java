@@ -53,7 +53,7 @@ public class IguanaCommandLevelUpTool extends CommandBase {
 						IguanaLevelingLogic.updateXP(equipped, entityplayermp, toolXP + requiredToolXP, headXP + requiredToolXP);
 
 					if (entityplayermp != icommandsender)
-						notifyAdmins(icommandsender, 1, "Leveled up %s's tool", new Object[]{entityplayermp.getEntityName()});
+						notifyAdmins(icommandsender, 1, "Leveled up %s's tool", new Object[]{entityplayermp.getDisplayName()});
 					else
 						notifyAdmins(icommandsender, 1, "Leveled up their own tool", new Object[]{});
 				} else
