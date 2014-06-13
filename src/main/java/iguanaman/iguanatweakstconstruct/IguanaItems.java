@@ -41,11 +41,11 @@ public class IguanaItems {
 
 		// CLAY BUCKETS
 		IguanaLog.log("Adding clay buckets");
-		clayBucketUnfired = new Item(IguanaConfig.clayBucketUnfiredId)
+		clayBucketUnfired = new Item()
 				.setUnlocalizedName("iguanatweakstconstruct:clayBucketUnfired")
 				.setTextureName("iguanatweakstconstruct:clayBucketUnfired")
 				.setMaxStackSize(16).setCreativeTab(CreativeTabs.tabMisc);
-		clayBucketFired = new ClayBucket(IguanaConfig.clayBucketFiredId, 0)
+		clayBucketFired = new ClayBucket(null)
 				.setUnlocalizedName("iguanatweakstconstruct:clayBucketFired")
 				.setTextureName("iguanatweakstconstruct:clayBucketFired")
 				.setMaxStackSize(16);

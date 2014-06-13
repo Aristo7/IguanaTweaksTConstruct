@@ -2,7 +2,10 @@ package iguanaman.iguanatweakstconstruct.blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.item.EntityFallingSand;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
 import tconstruct.blocks.GravelOre;
 
@@ -19,7 +22,7 @@ public class IguanaGravelOre extends GravelOre {
 	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
 	{
 		if (!par1World.isRemote)
-			if (canFallBelow(par1World, par2, par3 - 1, par4) && par3 >= 0)
+			if ( func_149831_e(par1World, par2, par3 - 1, par4) && par3 >= 0)
 			{
 				byte b0 = 32;
 
@@ -27,9 +30,9 @@ public class IguanaGravelOre extends GravelOre {
 				{
 					if (!par1World.isRemote)
 					{
-						EntityFallingSand entityfallingsand = new EntityFallingSand(par1World, par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, blockID, par1World.getBlockMetadata(par2, par3, par4));
-						entityfallingsand.shouldDropItem = false;
-						onStartFalling(entityfallingsand);
+						EntityFallingBlock entityfallingsand = new EntityFallingBlock(par1World, par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, this, par1World.getBlockMetadata(par2, par3, par4));
+						entityfallingsand.field_145813_c = false;
+						func_149829_a(entityfallingsand);
 						par1World.spawnEntityInWorld(entityfallingsand);
 					}
 				}
@@ -37,11 +40,11 @@ public class IguanaGravelOre extends GravelOre {
 				{
 					par1World.setBlockToAir(par2, par3, par4);
 
-					while (canFallBelow(par1World, par2, par3 - 1, par4) && par3 > 0)
+					while (func_149831_e(par1World, par2, par3 - 1, par4) && par3 > 0)
 						--par3;
 
 					if (par3 > 0)
-						par1World.setBlock(par2, par3, par4, blockID);
+						par1World.setBlock(par2, par3, par4, this);
 				}
 			}
 	}
