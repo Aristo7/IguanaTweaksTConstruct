@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -21,6 +23,7 @@ import tconstruct.items.Pattern;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.tools.TToolMaterial;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class VariousTweaks {
@@ -52,7 +55,7 @@ public class VariousTweaks {
 		// GRAVEL TO FLINT RECIPE
 		if (IguanaConfig.addFlintRecipe) {
 			IguanaLog.log("Adding gravel to flint recipe");
-			GameRegistry.addShapelessRecipe(new ItemStack(Item.flint), new Object[] {Block.gravel, Block.gravel, Block.gravel, Block.gravel});
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.flint), new Object[] {Blocks.gravel, Blocks.gravel, Blocks.gravel, Blocks.gravel});
 		}
 
 
@@ -140,7 +143,7 @@ public class VariousTweaks {
 		{
 			IguanaLog.log("Adding rotating pattern crafting recipes");
 
-			GameRegistry.registerCraftingHandler(new IguanaPatternCraftingHandler());
+			FMLCommonHandler.instance().bus().register(new IguanaPatternCraftingHandler());
 
 			String[] patternName = new String[] {
 					"ingot", "rod", "pickaxe", "shovel", "axe", "swordblade", "largeguard", "mediumguard", "crossbar",
@@ -176,7 +179,7 @@ public class VariousTweaks {
 		{
 			IguanaLog.log("Adding easy part crafting");
 			GameRegistry.addRecipe(new IguanaPartBuildRecipe());
-			GameRegistry.registerCraftingHandler(new IguanaPartCraftingHandler());
+			FMLCommonHandler.instance().bus().register(new IguanaPartCraftingHandler());
 		}
 
 
