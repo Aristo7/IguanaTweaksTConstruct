@@ -258,7 +258,7 @@ public class HarvestLevelTweaks {
 
 	public static void SetHarvestLevel(ItemStack oreStack, int level)
 	{
-		if (oreStack.itemID == TRepo.oreGravel.blockID)
+		if (oreStack.isItemEqual( new ItemStack(TRepo.oreGravel)))
 			return;
 
 		if (oreStack.getItemDamage() == OreDictionary.WILDCARD_VALUE)

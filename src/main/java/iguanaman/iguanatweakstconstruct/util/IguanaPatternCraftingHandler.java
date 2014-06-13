@@ -4,25 +4,23 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import tconstruct.common.TRepo;
-import cpw.mods.fml.common.ICraftingHandler;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 
-public class IguanaPatternCraftingHandler implements ICraftingHandler {
+public class IguanaPatternCraftingHandler { // implements ICraftingHandler {
 
-	@Override
-	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
+	@SubscribeEvent
+	public void onCrafting (ItemCraftedEvent event) {
+	//public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
 
-		if (item.getItem().itemID == TRepo.woodPattern.itemID)
-			for (int i = 0; i < craftMatrix.getSizeInventory(); i++)
+		if (new ItemStack(event.crafting.getItem()).isItemEqual(new ItemStack(TRepo.woodPattern)))
+			for (int i = 0; i < event.craftMatrix.getSizeInventory(); i++)
 			{
-				ItemStack inSlot = craftMatrix.getStackInSlot(i);
-				if (inSlot != null && inSlot.getItem().itemID == TRepo.woodPattern.itemID)
+				ItemStack inSlot = event.craftMatrix.getStackInSlot(i);
+				if (inSlot != null && inSlot.isItemEqual(new ItemStack(TRepo.woodPattern)))
 					if (inSlot.stackSize > 1) --inSlot.stackSize;
-					else craftMatrix.setInventorySlotContents(i, null);
+					else event.craftMatrix.setInventorySlotContents(i, null);
 			}
 
 	}
-
-	@Override
-	public void onSmelting(EntityPlayer player, ItemStack item) {}
-
 }

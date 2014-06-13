@@ -1,5 +1,7 @@
 package iguanaman.iguanatweakstconstruct.util;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -11,25 +13,26 @@ import tconstruct.library.crafting.PatternBuilder.ItemKey;
 import tconstruct.library.tools.BowstringMaterial;
 import tconstruct.library.tools.CustomMaterial;
 import tconstruct.library.tools.FletchingMaterial;
-import cpw.mods.fml.common.ICraftingHandler;
 
-public class IguanaPartCraftingHandler implements ICraftingHandler {
+public class IguanaPartCraftingHandler { // implements ICraftingHandler {
 
-	@Override
-	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
+	@SubscribeEvent
+    public void onCrafting (ItemCraftedEvent event) {
+	//public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix) {
 		ItemStack pattern = null;
 		ItemStack material = null;
-
-		for (int i = 0; i < craftMatrix.getSizeInventory(); i++)
+		
+		for (int i = 0; i < event.craftMatrix.getSizeInventory(); i++)
 		{
-			ItemStack slot = craftMatrix.getStackInSlot(i);
+			ItemStack slot = event.craftMatrix.getStackInSlot(i);
 
 			// Item in slot
 			if (slot != null)
 			{
 				// is the item in the slot a wood pattern?
 				boolean isPattern = false;
-				if (slot.getItem().itemID == TRepo.woodPattern.itemID) isPattern = true;
+				if (slot.isItemEqual(new ItemStack(TRepo.woodPattern))) 
+					isPattern = true;
 
 				// too many items
 				if (material != null && pattern != null || material != null && !isPattern) return;
@@ -75,11 +78,4 @@ public class IguanaPartCraftingHandler implements ICraftingHandler {
 			if (material.stackSize < used) material = null;
 			else material.stackSize -= used;
 	}
-
-	@Override
-	public void onSmelting(EntityPlayer player, ItemStack item) {
-
-
-	}
-
 }

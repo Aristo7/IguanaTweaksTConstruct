@@ -8,12 +8,12 @@ public class IguanaClientEventHandler {
 
 
 	/* Sounds */
-	@ForgeSubscribe
+	//@ForgeSubscribe
 	public void onSound (SoundLoadEvent event)
 	{
 		try
 		{
-			event.manager.addSound("iguanatweakstconstruct:chime.ogg");
+			//event.manager.addSound("iguanatweakstconstruct:chime.ogg");
 			FMLLog.warning("IguanaTweaksTConstruct: Loaded chime sound");
 		}
 		catch (Exception e)
