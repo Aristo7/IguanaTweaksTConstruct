@@ -50,7 +50,7 @@ public class IguanaTweaksTConstruct {
 	public void preInit(FMLPreInitializationEvent event) {
 
 		proxy.registerSounds();
-		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
+		
 
 		File installDir = event.getModConfigurationDirectory();
 		File configDir = new File(installDir, "TiC Tweaks");
@@ -71,6 +71,7 @@ public class IguanaTweaksTConstruct {
 
 		IguanaBlocks.init();
 		IguanaItems.init();
+		
 	}
 
 
@@ -88,6 +89,8 @@ public class IguanaTweaksTConstruct {
 		VariousTweaks.init();
 		RemoveVanillaTools.init();
 
+		NetworkRegistry.instance().registerGuiHandler(instance, proxy);
+		
 		IguanaLog.log("Starting event handler");
 		MinecraftForge.EVENT_BUS.register(new IguanaEventHandler());
 	}

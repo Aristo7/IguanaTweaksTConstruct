@@ -1,24 +1,49 @@
 buildscript {
     repositories {
         mavenCentral()
+		mavenLocal()
         maven {
-            name = "forge"
+            name = "ForgeFS"
             url = "http://files.minecraftforge.net/maven"
+        }
+		maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.0-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
+}
+
+
+repositories {
+    maven {
+        name 'CB Maven FS'
+        url "http://chickenbones.net/maven/"
+    }
+	maven {
+         name "ProfMobius Maven FS"
+         url "http://mobiusstrip.eu/maven"
+     }
+    maven {
+        name 'DVS1 Maven FS'
+        url 'http://dvs1.progwml6.com/files/maven'
+    }
+    maven {
+        name 'ForgeFS'
+        url 'http://files.minecraftforge.net/maven'
+     }
 }
 
 apply plugin: 'forge'
 
-version = "1.6.4-1.0.2"
+version = "1.7.2-1.0.2"
 group= "" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "tictweaks"
 
 minecraft {
-	version = "1.6.4-9.11.1.964"
+	version = "1.7.2-10.12.1.1101"
 }
 
 processResources

@@ -1,6 +1,7 @@
 package iguanaman.iguanatweakstconstruct.items;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -34,7 +35,7 @@ public class ClayBucketFilled extends FilledBucket {
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons (IconRegister iconRegister)
+	public void registerIcons (IIconRegister iconRegister)
 	{
 		icons = new IIcon[textureNames.length];
 

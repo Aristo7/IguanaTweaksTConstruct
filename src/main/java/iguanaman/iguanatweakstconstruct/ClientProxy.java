@@ -28,7 +28,7 @@ public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerSounds() {
-		MinecraftForge.EVENT_BUS.register(new IguanaClientEventHandler());
+		//MinecraftForge.EVENT_BUS.register(new IguanaClientEventHandler());
 	}
 
 	@Override
